@@ -172,7 +172,7 @@
 - Dockerfile, railway.json, .dockerignore, docs/DEPLOY-RAILWAY.md.
 
 ## Rebrand: MARVIN
-- Marswalk is now MARVIN (Mars Astronaut Route Visualization Intelligence Navigator). Header, intro card, About, footer, exports, downloads (`Marvin-project.zip`), launchers (`Run-Marvin.*`), docs.
+- Marswalk is now MARVIN (Mars Adaptive Routing and Visual Information Network). Header, intro card, About, footer, exports, downloads (`Marvin-project.zip`), launchers (`Run-Marvin.*`), docs.
 - Internal identifiers (localStorage keys, postMessage types, `marswalk_terrain.onnx`) keep the old name on purpose so saved plans and the model keep working.
 
 ## VR exit and 360 panels

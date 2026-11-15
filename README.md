@@ -1,6 +1,6 @@
 # MARVIN
 
-**M**ars **A**stronaut **R**oute **V**isualization **I**ntelligence **N**avigator (formerly Marswalk).
+**M**ars **A**daptive **R**outing and **V**isual **I**nformation **N**etwork (formerly Marswalk).
 
 A Jezero Crater mission planner for NASA Space Apps: choose a round-trip distance, mission time, and scientific activities; generate a route along the recorded Perseverance traverse; explore historical Mastcam-Z panoramas on screen or through WebXR.
 
