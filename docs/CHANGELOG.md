@@ -177,3 +177,6 @@
 
 ## VR exit and 360 panels
 - Grip exits VR; floating Enter VR button when a headset is detected; ring of site panels around you.
+
+## VR fixes
+- Walking follows head direction in world space (was ignoring the rig turn); thin route line and raised eye height; astronaut visible and followed; grip exit also polled; red EXIT VR button on the wrist panel.

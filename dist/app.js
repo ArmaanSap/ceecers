@@ -278,7 +278,7 @@ function vrPanelList(){
  P.push({title:'Destinations',text:pageText('#destinations')||'-'});
  P.push({title:'Data archive',text:pageText('#data')||'-'});
  P.push({title:'About MARVIN',text:pageText('#about')||'-'});
- P.push({title:'VR controls',text:'EXIT VR: squeeze either grip (side) button. You can always press the Meta button too.\n\nTrigger: teleport where you aim, or turn a page when aiming at a panel.\nLeft stick: walk (click it to go fast). Right stick: turn in steps.\nA: jump to the next stop. B: ride along with the walk / move freely.\nX: show or hide these panels. Turn your head or the right stick to see all 8 panels around you.'});
+ P.push({title:'VR controls',text:'EXIT VR: squeeze either grip (side) button. You can always press the Meta button too.\n\nTrigger: teleport where you aim, or turn a page when aiming at a panel.\nLeft stick: walk (click it to go fast). Right stick: turn in steps.\nWalking goes the way your head faces.\nA: jump to the next stop. B: follow the astronaut / move freely. Right stick click: start or pause the walk. Y: change eye height. Also the red EXIT VR button under the left wrist panel (aim, trigger).\nX: show or hide these panels. Turn your head or the right stick to see all 8 panels around you.'});
  return P;
 }
 async function launchVR(){
@@ -288,7 +288,8 @@ async function launchVR(){
  try{if($('#demPane').hidden)await openDem();else if(!dem)await loadDem();if(!dem?.vr)throw Error('3D view is not available');
   dem.vr.setPanels(vrPanelList());dem.vr.setNotes(demVRNotes());
   dem.vr.onEnd=()=>set('Enter VR',false);
-  await dem.vr.enter();set('Exit VR',false);
+  dem.vr.onWalk=()=>{const b=$('#simulate');if(b&&!b.disabled)b.click()};await dem.vr.enter();set('Exit VR',false);
+  { const b=$('#simulate');if(route?.stops?.length&&b&&!b.disabled&&/Start/.test(b.textContent))b.click() }   // so there is an astronaut to follow
  }catch(e){console.warn('VR failed',e);$('#demVRStatus').textContent='VR could not start: '+(e?.message||e);set('Enter VR',false)}
 }
 $('#demVR').onclick=launchVR;

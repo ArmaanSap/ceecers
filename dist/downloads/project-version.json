@@ -1,8 +1,8 @@
 {
   "project": "MARVIN",
   "format": 1,
-  "built_at": "2026-11-15T16:56:00.899895+00:00",
-  "source_fingerprint": "a05e0a553d92e5435a8a00fbc1ccf250ba74d4aaad74daa6db119e651979f8cc",
+  "built_at": "2026-11-15T17:09:26.426533+00:00",
+  "source_fingerprint": "bc9812302a72d24fed86d0f429bfcf0c1a91a157864deb255382ec42dd44c298",
   "exclusions": [
     "Git history and credentials",
     "Secrets and environment files",
@@ -11,7 +11,7 @@
     "External science archives not ingested into the project"
   ],
   "file_count": 250,
-  "zip_bytes": 43898886,
-  "zip_sha256": "a972d37fb1ae0c685459cec98f4b6645a3c3114a6afe80c838bd588b37399d7c",
+  "zip_bytes": 43900075,
+  "zip_sha256": "71df6ab6a519080a27a063e697b79cf6b3128b4efa5db73f7ffaec99b59ea46f",
   "download": "downloads/Marvin-project.zip"
 }
