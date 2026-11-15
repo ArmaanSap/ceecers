@@ -193,3 +193,4 @@ body.intro-active #introBrand{display:flex;flex-direction:column;align-items:cen
 @keyframes introBrand{0%{opacity:0}18%{opacity:1}72%{opacity:1}100%{opacity:0;visibility:hidden}}
 @media (prefers-reduced-motion:reduce){body.intro-active #introBrand{animation:none}}
 @media (max-width:700px){.acronym .acr{font-size:10px}.acronym .acr b{font-size:15px}}
+#vrFab{position:fixed;right:18px;bottom:18px;z-index:8000;padding:14px 20px;font:700 15px 'Press Start 2P',monospace;background:#7dffc6;color:#06201a;border:3px solid #06201a;box-shadow:0 0 0 3px #7dffc6,0 8px 24px #000a;cursor:pointer}#vrFab:disabled{opacity:.7}

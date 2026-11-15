@@ -268,8 +268,32 @@ let dem=null,demLoading=null;
 function demStops(){const out=[];const b=(panos||[]).find(p=>p.id===MISSION_BASE.panoramaId);if(b?.coord)out.push({lon:b.coord[0],lat:b.coord[1],name:'BASE',base:true});for(const s of route?.stops||[])if(s.coord)out.push({lon:s.coord[0],lat:s.coord[1],name:s.name,custom:!!s.custom,picked:true});return out}
 function demVRNotes(){const m={};for(const it of route?.explanations||[]){if(it.kind==='turn'||it.leg==null||!it.why&&!it.text)continue;if(it.kind!=='detour'&&it.kind!=='direct')continue;const nm=route.legs?.[it.leg]?.toName;if(nm&&!m[nm])m[nm]=it.why||it.text}return m}
 async function vrButtons(){const b=$('#demVR'),st=$('#demVRStatus');if(!b||!dem?.vr)return;const s=await dem.vr.support();b.disabled=!s.ok;st.textContent=s.ok?'':s.message;st.title=s.message}
-$('#demVR').onclick=async()=>{if(!dem?.vr)return;const b=$('#demVR');b.disabled=true;try{dem.vr.onEnd=()=>{b.textContent='Enter VR';b.disabled=false};await dem.vr.enter();b.textContent='In VR'}catch(e){console.warn('VR failed',e);$('#demVRStatus').textContent='VR could not start: '+(e?.message||e);b.disabled=false}};
-function demSync(){if(!dem)return;dem.vr?.setNotes(demVRNotes());dem.setRoute(route?.coords||[],demStops());dem.setAlt(altPreview);if(panos)dem.setPanos(panos.filter(p=>p.coord).map(p=>({id:p.id,lon:p.coord[0],lat:p.coord[1]})))}
+const pageText=sel=>{const el=document.querySelector(sel);if(!el)return '';const seen=new Set(),out=[];el.querySelectorAll('h1,h2,h3,h4,p,li,th,td,summary,dt,dd,label').forEach(n=>{const raw=n.matches('.acronym')?(n.getAttribute('aria-label')||''):n.querySelector('br')?[...n.childNodes].map(c=>c.textContent).join(' '):n.textContent,t=raw.replace(/\s+/g,' ').trim();if(t&&!seen.has(t)){seen.add(t);out.push(t)}});return out.join('\n').slice(0,7000)};
+function vrPanelList(){
+ const r=route,P=[];
+ P.push({title:'Mission plan',text:r?.stops?.length?`${r.stops.length} stop${r.stops.length===1?'':'s'} · ${(r.distance/1000).toFixed(2)} km · ${Math.ceil(r.minutes)} min · climb ${Math.round(r.ascent||0)} m${r.kcal?` · about ${Math.round(r.kcal)} kcal`:''}\n\nMartian Base (start)\n`+r.stops.map((x,i)=>`${i+1}. ${x.name}`).join('\n')+'\nReturn to Martian Base':'No plan yet. Take the headset off or use the page to choose stops, then Make route.'});
+ P.push({title:'Why this route',text:(r?.explanations||[]).filter(e=>e.kind!=='turn').map(e=>`${e.title}\n${e.text}`).join('\n\n')||'Build a route to see the reasons.'});
+ P.push({title:'CAPCOM',text:pageText('#capcom')||'CAPCOM has nothing to report yet.'});
+ P.push({title:'Terrain and ground',text:(pageText('#terrainAICard')||'Terrain AI: open Panorama and run the live scan.')+(r?.costSummary?`\n\nPath cost drivers: ${r.costSummary.drivers.slice(0,3).map(d=>d.label+' '+Math.round(d.share*100)+'%').join(', ')}. Steepest ground ${Math.round(r.costSummary.maxSlopeDeg)} degrees.`:'')});
+ P.push({title:'Destinations',text:pageText('#destinations')||'-'});
+ P.push({title:'Data archive',text:pageText('#data')||'-'});
+ P.push({title:'About MARVIN',text:pageText('#about')||'-'});
+ P.push({title:'VR controls',text:'EXIT VR: squeeze either grip (side) button. You can always press the Meta button too.\n\nTrigger: teleport where you aim, or turn a page when aiming at a panel.\nLeft stick: walk (click it to go fast). Right stick: turn in steps.\nA: jump to the next stop. B: ride along with the walk / move freely.\nX: show or hide these panels. Turn your head or the right stick to see all 8 panels around you.'});
+ return P;
+}
+async function launchVR(){
+ const btns=[$('#demVR'),$('#vrFab')].filter(Boolean),set=(t,d)=>btns.forEach(b=>{b.textContent=t;b.disabled=!!d});
+ if(dem?.vr?.active()){dem.vr.exit();return}
+ set('Starting VR…',true);
+ try{if($('#demPane').hidden)await openDem();else if(!dem)await loadDem();if(!dem?.vr)throw Error('3D view is not available');
+  dem.vr.setPanels(vrPanelList());dem.vr.setNotes(demVRNotes());
+  dem.vr.onEnd=()=>set('Enter VR',false);
+  await dem.vr.enter();set('Exit VR',false);
+ }catch(e){console.warn('VR failed',e);$('#demVRStatus').textContent='VR could not start: '+(e?.message||e);set('Enter VR',false)}
+}
+$('#demVR').onclick=launchVR;
+const fabEl=$('#vrFab');if(fabEl){fabEl.onclick=launchVR;vrSupport().then(st=>{if(!st.ok)return;fabEl.hidden=false;setTimeout(()=>loadDem().then(ok=>ok&&demSync()),1200)})}
+function demSync(){if(!dem)return;dem.vr?.setNotes(demVRNotes());dem.vr?.setPanels(vrPanelList());dem.setRoute(route?.coords||[],demStops());dem.setAlt(altPreview);if(panos)dem.setPanos(panos.filter(p=>p.coord).map(p=>({id:p.id,lon:p.coord[0],lat:p.coord[1]})))}
 const loadImg=src=>new Promise(r=>{const im=new Image();im.onload=()=>r(im);im.onerror=()=>r(null);im.src=src});
 function loadDem(){
  if(dem)return Promise.resolve(true);
