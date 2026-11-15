@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+python3 scripts/build_bundle.py
+python3 scripts/build_bundle.py --check
+git add -- dist/downloads/Marvin-project.zip dist/downloads/project-version.json

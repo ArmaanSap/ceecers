@@ -1,0 +1,16 @@
+{
+  "bounds": [
+    77.36,
+    18.4,
+    77.48,
+    18.52
+  ],
+  "request": "https://maps.planet.fu-berlin.de/jez-bin/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=base-hsv&STYLES=&SRS=EPSG%3A49911&BBOX=4585490.600402969%2C1090654.4344288344%2C4592603.564105766%2C1097767.398131631&WIDTH=1500&HEIGHT=1500&FORMAT=image%2Fpng",
+  "source": "https://maps.planet.fu-berlin.de/jezero/",
+  "method": "Provider colorized HiRISE/CTX mosaic, pan-sharpened with HRSC color. Not native full-resolution RGB HiRISE.",
+  "credit": "ESA/DLR/FU Berlin \u00b7 NASA/JPL-Caltech/UArizona/USGS",
+  "size": [
+    1500,
+    1500
+  ]
+}

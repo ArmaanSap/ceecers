@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Terrain model check</title>
+<style>
+:root{--bg:#0f1a12;--fg:#e9eddc;--mut:#9aa38c;--acc:#ffb81c;--ok:#7dffc6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 system-ui,sans-serif;display:grid;place-items:start center;padding:20px}
+main{width:min(680px,100%)}h1{font-size:20px;margin:0 0 4px}p{margin:6px 0;color:var(--mut)}
+.card{background:#16241a;border:1px solid #2b3b2e;padding:14px;margin:12px 0}
+#img{width:100%;max-width:384px;aspect-ratio:1;image-rendering:auto;display:block;margin:0 auto;border:2px solid #000;background:#000}
+.btns{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}.btns button{padding:12px;font:inherit;font-weight:700;background:#233626;color:var(--fg);border:2px solid #3a4f3d;cursor:pointer;text-align:left}
+.btns button:hover,.btns button:focus-visible{border-color:var(--acc)}.btns small{display:block;font-weight:400;color:var(--mut);font-size:12px}
+.row{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-top:8px}.row button{padding:8px 12px;font:inherit;background:none;color:var(--fg);border:1px solid #3a4f3d;cursor:pointer}
+progress{width:100%;height:10px}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #2b3b2e;padding:6px 8px;text-align:right}th:first-child,td:first-child{text-align:left}
+.big{font-size:34px;color:var(--ok);font-weight:800}.warn{color:var(--acc)}kbd{background:#233626;border:1px solid #3a4f3d;padding:0 5px}
+</style></head><body><main>
+<h1>Does the terrain model work on real panoramas?</h1>
+<p>80 small crops from the Mastcam-Z panoramas. The magenta ticks point at the centre pixel. Label what the <b>ground at that spot</b> is. You can't see the model's answer until the end.</p>
+<div id="quiz"><div class="card"><progress id="bar" max="80" value="0"></progress><p id="count"></p><img id="img" alt="Crop of Martian ground; magenta ticks point at the centre pixel">
+<div class="btns"><button data-c="soil"><kbd>1</kbd> Soil<small>loose fine ground, small pebbles</small></button><button data-c="bedrock"><kbd>2</kbd> Bedrock<small>flat or fractured solid rock, outcrop</small></button><button data-c="sand"><kbd>3</kbd> Sand<small>dunes, ripples, smooth drift</small></button><button data-c="big_rock"><kbd>4</kbd> Big rock<small>single rock larger than a fist</small></button></div>
+<div class="row"><button id="back">← Back</button><button id="skip"><kbd>0</kbd> Can't tell / rover / sky</button></div></div>
+<p>Keys: <kbd>1</kbd> soil <kbd>2</kbd> bedrock <kbd>3</kbd> sand <kbd>4</kbd> big rock <kbd>0</kbd> skip. Your answers are saved in this browser, so you can close the tab and come back.</p></div>
+<div id="result" hidden></div>
+<script src="key.js"></script>
+<script>
+const C=['soil','bedrock','sand','big_rock'],K=window.KEY,KEYSTORE='terrain-eval-answers-v1';let ans=[],i=0;
+try{ans=JSON.parse(localStorage.getItem(KEYSTORE)||'[]').slice(0,K.length)}catch{ans=[]}
+i=ans.length;
+const $=s=>document.querySelector(s);
+function save(){try{localStorage.setItem(KEYSTORE,JSON.stringify(ans))}catch{}}
+function show(){if(i>=K.length)return finish();$('#img').src=K[i].file;$('#bar').value=i;$('#count').textContent=`Crop ${i+1} of ${K.length}`;$('#back').disabled=i===0}
+function answer(c){ans[i]=c;i++;save();show()}
+document.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>answer(b.dataset.c));
+$('#skip').onclick=()=>answer(null);$('#back').onclick=()=>{if(i>0){i--;ans.length=i;save();show()}};
+addEventListener('keydown',e=>{if($('#quiz').hidden)return;const k={'1':'soil','2':'bedrock','3':'sand','4':'big_rock'}[e.key];if(k)answer(k);else if(e.key==='0'||e.key===' ')answer(null);else if(e.key==='Backspace')$('#back').click()});
+function finish(){
+ $('#quiz').hidden=true;const R=$('#result');R.hidden=false;
+ const rows=K.map((k,j)=>({pred:k.pred,truth:ans[j],name:k.name})).filter(r=>r.truth);const n=rows.length,right=rows.filter(r=>r.pred===r.truth).length;
+ const M=Object.fromEntries(C.map(a=>[a,Object.fromEntries(C.map(b=>[b,0]))]));rows.forEach(r=>M[r.truth][r.pred]++);
+ const pct=(a,b)=>b?Math.round(a/b*100)+'%':'-';
+ const per=C.map(c=>{const tp=M[c][c],truth=C.reduce((s,p)=>s+M[c][p],0),pred=C.reduce((s,t)=>s+M[t][c],0);return {c,recall:pct(tp,truth),precision:pct(tp,pred),n:truth}});
+ const ious=C.map(c=>{const tp=M[c][c],fn=C.reduce((s,p)=>s+M[c][p],0)-tp,fp=C.reduce((s,t)=>s+M[t][c],0)-tp;return tp+fn+fp?tp/(tp+fn+fp):null}).filter(v=>v!=null);
+ const res={samples:n,skipped:K.length-n,pointAccuracy:n?+(right/n).toFixed(3):null,perClass:per,confusion:M,note:'Points sampled evenly across predicted classes (20 each), so accuracy is not the share of terrain; crops chosen from pixels the model judged to be ground; labels by the team, one labeller.'};
+ R.innerHTML=`<h1>Result</h1><div class="card"><div class="big">${n?Math.round(right/n*100):0}%</div><p>of ${n} labelled points match the model (${K.length-n} skipped). Points were drawn evenly across the model's four classes, so this is accuracy per sampled point, not a share of the terrain.</p></div>
+ <div class="card"><b>Per class</b> (rows: what you said, columns: what the model said)<table><tr><th>You \\ Model</th>${C.map(c=>`<th>${c.replace('_',' ')}</th>`).join('')}<th>recall</th></tr>${C.map((c,ci)=>`<tr><td>${c.replace('_',' ')}</td>${C.map(d=>`<td>${M[c][d]}</td>`).join('')}<td>${per[ci].recall}</td></tr>`).join('')}<tr><td>precision</td>${per.map(p=>`<td>${p.precision}</td>`).join('')}<td></td></tr></table>
+ <p class="warn">Small sample, one labeller, so treat it as a rough check (roughly +/-10 points). Send the downloaded file back for the write-up.</p></div>
+ <div class="row"><button id="dl">Download results.json</button><button id="redo">Start over</button></div>`;
+ $('#dl').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({...res,answers:K.map((k,j)=>({file:k.file,pano:k.name,model:k.pred,you:ans[j]}))},null,1)],{type:'application/json'}));a.download='results.json';a.click()};
+ $('#redo').onclick=()=>{ans=[];i=0;save();R.hidden=true;$('#quiz').hidden=false;show()};
+}
+show();
+</script></main></body></html>

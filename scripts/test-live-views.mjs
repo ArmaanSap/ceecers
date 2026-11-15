@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {compass,bearingDeg,fmtDist,nearestViews} from '../dist/live-views.js';
+import {distance} from '../dist/routing.js';
+assert.equal(compass(0),'N');assert.equal(compass(92),'E');assert.equal(compass(359),'N');assert.equal(compass(-90),'W');
+const o=[77.4,18.4];assert.ok(Math.abs(bearingDeg(o,[77.4,18.5])-0)<.5);assert.ok(Math.abs(bearingDeg(o,[77.5,18.4])-90)<.5);assert.ok(Math.abs(bearingDeg(o,[77.4,18.3])-180)<.5);
+assert.equal(fmtDist(432),'430 m');assert.equal(fmtDist(1234),'1.23 km');assert.equal(fmtDist(NaN),'');
+const panos=[{id:1,name:'Far',coord:[77.45,18.45]},{id:2,name:'Near',coord:[77.401,18.4]},{id:3,name:'Mid',coord:[77.41,18.41]},{id:4,name:'Bad',coord:null}];
+const v=nearestViews(panos,o,distance,2);assert.deepEqual(v.map(x=>x.pano.name),['Near','Mid']);assert.equal(v[0].dir,'E');assert.match(v[0].label,/m$/);
+assert.deepEqual(nearestViews(panos,null,distance),[]);
+console.log('Live views: nearest panoramas, distance and compass direction.');

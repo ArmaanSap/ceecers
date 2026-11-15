@@ -1,0 +1,13 @@
+{
+ "per_class_iou": {
+  "soil": 0.986,
+  "bedrock": 0.933,
+  "sand": 0.957,
+  "big_rock": 0.458
+ },
+ "mIoU": 0.833,
+ "pixel_accuracy": 0.982,
+ "test_split": "test_min3",
+ "train_epochs": 2,
+ "input_size": 384
+}

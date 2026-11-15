@@ -1,0 +1,6 @@
+input: 384x384 RGB, float32 NCHW, scaled 0-1 then normalised with mean [0.48500001430511475, 0.4560000002384186, 0.4059999883174896] std [0.2290000021457672, 0.2240000069141388, 0.22499999403953552]
+output: logits 1x4x96x96 (upsample to image size, argmax)
+classes in index order: ['soil', 'bedrock', 'sand', 'big_rock']
+source: SegFormer-B0 (nvidia/mit-b0 encoder) fine-tuned by us on AI4Mars (hassanjbara/AI4MARS, CC0), 2 epochs
+metrics: {"per_class_iou": {"soil": 0.986, "bedrock": 0.933, "sand": 0.957, "big_rock": 0.458}, "mIoU": 0.833, "pixel_accuracy": 0.982, "test_split": "test_min3", "train_epochs": 2, "input_size": 384}
+licence: base weights nvidia/mit-b0, see its model card

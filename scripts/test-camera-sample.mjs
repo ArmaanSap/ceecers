@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';
+import {poiExtent} from '../dist/terrain-camera.js';import {MISSION_BASE} from '../dist/mission-base.js';import {SAMPLE_HANDOFF} from '../dist/sample-mission.js';import {buildGraph,planMission} from '../dist/routing.js';import {satisfies,findAlternative} from '../dist/route-alternatives.js';
+const data=JSON.parse(fs.readFileSync('dist/assets/data.json')),panos=data.panoramas,e=poiExtent(panos,MISSION_BASE);
+for(const p of panos){assert(p.coord[0]>e.xmin&&p.coord[0]<e.xmax);assert(p.coord[1]>e.ymin&&p.coord[1]<e.ymax)}assert.equal(e.spatialReference.wkid,104971);assert.ok(e.xmax-e.xmin<.3);
+const g=buildGraph([{geometry:{coordinates:[[77.4,18.45,0],[77.401,18.45,0]]}}],[77.39,18.4,77.5,18.5]),start={id:0,node:0,coord:g.nodes[0],name:'Base'},stops=[{id:1,node:1,coord:g.nodes[1],tasks:[{id:'photo',min:12}]}];
+const s={maxDistance:1000,budget:120,speed:2,maxGrade:20,preference:'science',ids:['photo','sample'],baseTasks:[SAMPLE_HANDOFF]};
+const mixed=planMission(g,start,stops,s),field=planMission(g,start,stops,{...s,ids:['photo'],baseTasks:[]});assert.equal(mixed.minutes,field.minutes+30);assert.equal(mixed.legs.at(-1).scienceMinutes,30);assert.ok(satisfies(mixed,s));assert.ok(mixed.minutes<=s.budget*.8);
+const only={...s,ids:['sample']},baseOnly=planMission(g,start,[],only);assert.equal(baseOnly.minutes,30);assert.equal(baseOnly.distance,0);assert.equal(baseOnly.coords.length,1);assert.ok(satisfies(baseOnly,only));
+const tight={...only,budget:30};assert.ok(!satisfies(planMission(g,start,[],tight),tight));const alt=findAlternative(g,start,[],tight);assert.ok(alt.changes.some(c=>c.kind==='time'));assert.equal(alt.settings.budget,60);assert.equal(SAMPLE_HANDOFF.hypothetical,true);assert.equal(SAMPLE_HANDOFF.carrier,'Perseverance rover');
+console.log('POI extent contains every point; handoff is one-time, budgeted, hypothetical, and works alone or with a traverse.');

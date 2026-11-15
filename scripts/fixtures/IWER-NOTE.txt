@@ -1,0 +1,1 @@
+iwer.min.js: Immersive Web Emulation Runtime by Meta Platforms, MIT License (https://github.com/meta-quest/immersive-web-emulation-runtime). Test-only; never served to users.

@@ -1,0 +1,104 @@
+/* MARVIN Conditions & Abort addon: intentionally prefixed, does not restyle the existing map. */
+#marswalk-conditions-root{--mc-bg:#0b141d;--mc-surface:#111e29;--mc-panel:#162531;--mc-line:#2b4050;--mc-white:#eaf4f5;--mc-muted:#93aab6;--mc-cyan:#70e1e9;--mc-red:#ff8c7c;--mc-amber:#e9bd76;--mc-green:#86d9ab;position:fixed;z-index:2147483000;right:19px;bottom:19px;pointer-events:none;font:13px/1.45 Inter,'Segoe UI',Arial,sans-serif;color:var(--mc-white);text-align:left;color-scheme:dark}
+#marswalk-conditions-root *{box-sizing:border-box}
+#marswalk-conditions-root button,#marswalk-conditions-root input,#marswalk-conditions-root select{font:inherit}
+#marswalk-conditions-root button{cursor:pointer}
+#marswalk-conditions-root button:focus-visible,#marswalk-conditions-root input:focus-visible,#marswalk-conditions-root select:focus-visible,#marswalk-conditions-root a:focus-visible{outline:2px solid var(--mc-cyan);outline-offset:2px}
+#marswalk-conditions-root .mc-launch{pointer-events:auto;display:flex;align-items:center;gap:11px;padding:11px 15px;background:#10232d;color:var(--mc-white);border:1px solid #477586;border-radius:10px;box-shadow:0 8px 22px #0009;min-width:232px;justify-content:space-between}
+#marswalk-conditions-root .mc-launch-label{display:flex;flex-direction:column;align-items:flex-start;flex:1}
+#marswalk-conditions-root .mc-launch-label strong{font-size:11px;letter-spacing:1px}
+#marswalk-conditions-root .mc-launch-label small{font-size:10px;color:var(--mc-muted);letter-spacing:.2px;margin-top:2px}
+#marswalk-conditions-root .mc-dot{width:10px;height:10px;border-radius:50%;background:#7d94a2;box-shadow:0 0 0 4px #7d94a21d;flex:none}
+#marswalk-conditions-root .mc-status-red .mc-dot,#marswalk-conditions-root .mc-status-red .mc-light{background:var(--mc-red)}
+#marswalk-conditions-root .mc-status-green .mc-dot,#marswalk-conditions-root .mc-status-green .mc-light{background:var(--mc-green)}
+#marswalk-conditions-root .mc-status-amber .mc-dot,#marswalk-conditions-root .mc-status-amber .mc-light{background:var(--mc-amber)}
+#marswalk-conditions-root .mc-status-neutral .mc-dot,#marswalk-conditions-root .mc-status-neutral .mc-light{background:#9caebb}
+#marswalk-conditions-root .mc-panel{pointer-events:auto;position:fixed;right:19px;top:18px;bottom:83px;width:min(448px,calc(100vw - 28px));min-height:0;background:var(--mc-bg);border:1px solid #496070;border-radius:13px;box-shadow:0 21px 70px #000c;overflow:hidden;display:flex;flex-direction:column}
+#marswalk-conditions-root .mc-panel[hidden]{display:none}
+#marswalk-conditions-root .mc-header{padding:19px 20px 15px;background:radial-gradient(ellipse at 95% 0,#324443 0,transparent 57%),linear-gradient(125deg,#172a34,#101b26 80%);border-bottom:1px solid #314451;position:relative}
+#marswalk-conditions-root .mc-overline{font-weight:800;color:var(--mc-cyan);letter-spacing:2.2px;font-size:9px}
+#marswalk-conditions-root .mc-header h2{font-size:24px;line-height:1.1;letter-spacing:-.8px;margin:12px 0 7px;font-weight:780}
+#marswalk-conditions-root .mc-header h2 em{font-style:normal;color:var(--mc-amber)}
+#marswalk-conditions-root .mc-header p{margin:0;font-size:10px;letter-spacing:1.6px;color:#a4b7bf}
+#marswalk-conditions-root .mc-close{position:absolute;right:15px;top:12px;border:1px solid #576c7b;background:#20323f;color:var(--mc-white);width:28px;height:28px;border-radius:6px;font-size:20px;line-height:1}
+#marswalk-conditions-root .mc-banner{display:flex;align-items:center;gap:13px;margin:15px 18px 9px;border:1px solid #50606c;background:#1b3038;padding:12px;border-radius:7px}
+#marswalk-conditions-root .mc-banner.mc-status-red{border-color:#986050;background:#362826}
+#marswalk-conditions-root .mc-banner.mc-status-amber{border-color:#947344;background:#302b23}
+#marswalk-conditions-root .mc-banner.mc-status-green{border-color:#5b886e;background:#1d322a}
+#marswalk-conditions-root .mc-light{width:11px;height:11px;border-radius:50%;background:#97a9b3;flex:none;box-shadow:0 0 0 4px #ffffff0a}
+#marswalk-conditions-root .mc-banner>div{display:flex;flex-direction:column;min-width:0}
+#marswalk-conditions-root .mc-banner small{font-size:9px;letter-spacing:.9px;color:#b2c0c4}
+#marswalk-conditions-root .mc-banner strong{font-size:15px;letter-spacing:1px}
+#marswalk-conditions-root .mc-bannerright{margin-left:auto;text-align:right;max-width:118px;color:#afbdc5;font-size:9px;font-weight:800;letter-spacing:.3px}
+#marswalk-conditions-root .mc-tabs{padding:0 18px;border-bottom:1px solid var(--mc-line);display:flex;gap:5px}
+#marswalk-conditions-root .mc-tabs button{padding:12px 13px 11px;color:#9bb0b8;background:transparent;border:0;border-bottom:2px solid transparent;font-size:11px;font-weight:700;letter-spacing:.3px}
+#marswalk-conditions-root .mc-tabs button.active{color:var(--mc-white);border-bottom-color:var(--mc-cyan)}
+#marswalk-conditions-root .mc-scroll{overflow-y:auto;overflow-x:hidden;flex:1;padding:14px 18px 22px;scrollbar-color:#3d5363 transparent;scrollbar-width:thin}
+#marswalk-conditions-root .mc-labnote{display:flex;align-items:flex-start;gap:10px;background:#212a32;border:1px solid #475361;border-radius:7px;padding:11px 12px;margin-bottom:17px;color:var(--mc-amber)}
+#marswalk-conditions-root .mc-labnote svg{flex:none;margin-top:2px}
+#marswalk-conditions-root .mc-labnote div{display:flex;flex-direction:column;gap:3px}
+#marswalk-conditions-root .mc-labnote strong{font-size:11px}
+#marswalk-conditions-root .mc-labnote span{font-size:11px;color:#b7c5c9}
+#marswalk-conditions-root .mc-section-label{font-size:9px;font-weight:800;letter-spacing:2px;color:#8fa7b1;margin:15px 0 10px}
+#marswalk-conditions-root .mc-metrics{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+#marswalk-conditions-root .mc-metric{background:#172630;border:1px solid var(--mc-line);border-radius:7px;padding:13px 12px;min-height:98px}
+#marswalk-conditions-root .mc-metric-wide{grid-column:span 2;min-height:80px}
+#marswalk-conditions-root .mc-metric-top{display:flex;align-items:center;gap:7px;color:#9ab6c0;font-weight:700;font-size:10px}
+#marswalk-conditions-root .mc-metric-top svg{width:14px;height:14px;color:var(--mc-cyan)}
+#marswalk-conditions-root .mc-metric-value{font-size:25px;font-weight:790;letter-spacing:-.5px;margin:8px 0 2px;line-height:1}
+#marswalk-conditions-root .mc-metric-value small{font-size:12px;font-weight:500;color:#becdd0}
+#marswalk-conditions-root .mc-metric-sub{color:#829daa;font-size:9.5px;line-height:1.45;margin-top:6px}
+#marswalk-conditions-root .mc-metric-wide .mc-metric-value{font-size:17px}
+#marswalk-conditions-root .mc-budget{border:1px solid var(--mc-line);border-radius:7px;background:#13212b;padding:10px 13px}
+#marswalk-conditions-root .mc-budgetline{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;padding:6px 0;font-size:11px;color:#aabdc5}
+#marswalk-conditions-root .mc-budgetline b{font-size:12px;color:var(--mc-white);white-space:nowrap}
+#marswalk-conditions-root .mc-budgetline span{max-width:250px}
+#marswalk-conditions-root .mc-budget-total{border-top:1px solid var(--mc-line);margin-top:4px;padding-top:10px}
+#marswalk-conditions-root .mc-budget-total b{color:var(--mc-cyan)}
+#marswalk-conditions-root .mc-budget-total b.mc-red{color:var(--mc-red)}
+#marswalk-conditions-root .mc-fine{font-size:10.5px;line-height:1.6;color:#90a6b0;margin:12px 0}
+#marswalk-conditions-root .mc-fine strong{color:#d5e4e7}
+#marswalk-conditions-root .mc-fine code{color:var(--mc-cyan);white-space:normal;overflow-wrap:anywhere}
+#marswalk-conditions-root .mc-controls{display:flex;align-items:end;gap:9px;margin:16px 0}
+#marswalk-conditions-root .mc-controls label{font-size:9px;letter-spacing:1px;font-weight:800;color:#9bb0bc;flex:1}
+#marswalk-conditions-root select,#marswalk-conditions-root input[type="number"]{background:#1e2f3d;color:#e2eef1;border:1px solid #3f6171;padding:9px;border-radius:5px;width:100%;font-size:11px;margin-top:6px}
+#marswalk-conditions-root .mc-minor,#marswalk-conditions-root .mc-secondary{color:#c5e1e5;background:#1b3440;border:1px solid #497486;border-radius:5px;padding:10px;font-size:11px;font-weight:650;white-space:nowrap}
+#marswalk-conditions-root .mc-times{background:#142632;border:1px solid var(--mc-line);border-radius:7px;padding:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+#marswalk-conditions-root .mc-times label{font-size:10px;color:#a6bcc5}
+#marswalk-conditions-root .mc-times .mc-fill,#marswalk-conditions-root .mc-times p{grid-column:span 3}
+#marswalk-conditions-root .mc-times p{margin:0}
+#marswalk-conditions-root .mc-reasons{padding:0 0 0 19px;color:#d2dee2;font-size:11px;line-height:1.6;margin:0}
+#marswalk-conditions-root .mc-reasons li{padding-bottom:7px}
+#marswalk-conditions-root .mc-protocol{background:#232b31;border-left:3px solid var(--mc-amber);padding:13px;margin-bottom:12px;border-radius:3px}
+#marswalk-conditions-root .mc-protocol b{font-size:12px;letter-spacing:.4px}
+#marswalk-conditions-root .mc-protocol p{font-size:11px;color:#b5c2c7;line-height:1.6;margin:7px 0 0}
+#marswalk-conditions-root .mc-task{display:flex;align-items:flex-start;gap:9px;border-bottom:1px solid #2c3f4b;padding:12px 0;cursor:pointer}
+#marswalk-conditions-root .mc-task input{accent-color:#70e1e9;margin-top:3px;flex:none}
+#marswalk-conditions-root .mc-tasknum{color:var(--mc-amber);font-size:9px;font-weight:800;margin-top:3px}
+#marswalk-conditions-root .mc-task strong{display:block;color:#e2eef1;font-size:11px}
+#marswalk-conditions-root .mc-task small{display:block;color:#98aeba;font-size:10px;margin-top:3px;line-height:1.55}
+#marswalk-conditions-root .mc-returnbox{background:#172a34;border:1px solid #466272;padding:12px;margin-top:16px;border-radius:7px}
+#marswalk-conditions-root .mc-return{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #d38c79;color:#fff4ee;background:#953e39;border-radius:5px;padding:11px 13px;font-size:11px;font-weight:850;letter-spacing:1px;width:100%;margin-top:10px}
+#marswalk-conditions-root .mc-requested{margin-top:12px;background:#343524;border:1px solid #a7a24e;border-radius:4px;padding:9px;color:#f3e3ab;font-weight:800;font-size:10px}
+#marswalk-conditions-root .mc-sources a{display:block;color:inherit;text-decoration:none;background:#142530;border:1px solid #354b57;border-radius:7px;margin-bottom:8px;padding:11px}
+#marswalk-conditions-root .mc-sources a:hover{border-color:#6aaab9}
+#marswalk-conditions-root .mc-sources b{display:block;color:#8ee0e8;font-size:11px}
+#marswalk-conditions-root .mc-sources small{display:block;color:#a2b8c1;font-size:10px;line-height:1.5;margin-top:5px}
+#marswalk-conditions-root .mc-footer{background:#0d1a24;border-top:1px solid var(--mc-line);padding:11px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+#marswalk-conditions-root .mc-footer span{display:flex;align-items:center;gap:7px;font-size:9px;letter-spacing:.5px;color:#8296a1}
+#marswalk-conditions-root .mc-footer-dot{width:6px;height:6px;border-radius:50%;background:#8296a1}
+#marswalk-conditions-root .mc-footer button{border:none;background:none;color:var(--mc-cyan);font-size:10px;font-weight:800;display:flex;gap:4px;align-items:center;white-space:nowrap}
+#marswalk-conditions-root .mc-footer button svg{width:12px;height:12px}
+@media(max-width:550px){#marswalk-conditions-root{right:9px;bottom:9px}#marswalk-conditions-root .mc-panel{right:6px;left:6px;width:auto;top:6px;bottom:68px}#marswalk-conditions-root .mc-launch{min-width:205px}#marswalk-conditions-root .mc-header h2{font-size:20px}#marswalk-conditions-root .mc-bannerright{max-width:84px}}
+@media print{#marswalk-conditions-root{display:none!important}}
+
+#marswalk-conditions-root .mc-history{background:#12222d;border:1px solid var(--mc-line);border-radius:7px;padding:10px 11px}
+#marswalk-conditions-root .mc-historical{display:grid;grid-template-columns:83px minmax(70px,1fr) 89px;gap:10px;align-items:center;padding:6px 0}
+#marswalk-conditions-root .mc-historical strong{display:block;color:#dce8e9;font-size:10px}
+#marswalk-conditions-root .mc-historical small{display:block;color:#91a8b1;font-size:9px}
+#marswalk-conditions-root .mc-historical b{font-size:10px;color:#dae7e8;white-space:nowrap;text-align:right}
+#marswalk-conditions-root .mc-bar{height:5px;background:#3a4a51;border-radius:5px;overflow:hidden}
+#marswalk-conditions-root .mc-bar i{display:block;height:100%;background:linear-gradient(90deg,#93c9c7,#eeac78);border-radius:5px}
+#marswalk-conditions-root .mc-history p{font-size:9.8px;line-height:1.65;color:#98aeb7;margin:9px 0 0}
+#marswalk-conditions-root .mc-history a{color:#8cdee8;text-decoration:underline}
+#marswalk-conditions-root .mc-history p strong{color:#e0bd7b}

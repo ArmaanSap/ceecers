@@ -1,0 +1,44 @@
+{
+  "grid": {
+    "width": 450,
+    "height": 474,
+    "bounds": {
+      "west": 77.34000362135924,
+      "east": 77.50008145308786,
+      "south": 18.380186580819416,
+      "north": 18.54011991487435
+    },
+    "groundCellMetres_eastWest_mean": 20.00070990343293,
+    "groundCellMetres_northSouth": 20.0
+  },
+  "slopeDeg": {
+    "min": 0.001978184097151316,
+    "median": 2.5642881601046947,
+    "p95": 10.484819984892617,
+    "max": 34.21759866366639
+  },
+  "fractionAbove": {
+    "10.0": 0.0560056258790436,
+    "20.0": 0.004706985466479138
+  },
+  "nodataFraction": 0.0,
+  "elevationM": {
+    "min": -50.016357421875,
+    "max": 322.887451171875
+  },
+  "caveats": [
+    "Slope computed from the DEM at its native/decimated resolution; rocks and cross-slopes smaller than a pixel are not represented.",
+    "Not a sand-stability or rock-abundance map.",
+    "Projection assumed Eqc (lat_ts=18.47, R=3396190.0); verify against the DEM metadata."
+  ],
+  "source": {
+    "dem": "M20_JezeroCrater_CTXDEM_20m_maaz_detrended.tif",
+    "crs": "+proj=eqc +lat_ts=18.4663 +lat_0=0 +lon_0=0 +x_0=0 +y_0=0 +R=3396190 +units=m +no_defs=True",
+    "latTsDeg": 18.4663,
+    "decimate": 1,
+    "cellProjM": [
+      20.0,
+      20.0
+    ]
+  }
+}

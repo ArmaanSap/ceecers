@@ -1,0 +1,195 @@
+/* MARVIN layout: left = build the mission, centre = map + one slim transport bar, right = live mission plan.
+   Loaded last. Everything secondary (camera, drills, itinerary text, log, history) is folded away. */
+.workspace{display:grid;grid-template-columns:270px minmax(0,1fr) 320px;gap:14px;align-items:start}
+.workspace>.mission-picker{grid-column:1;grid-row:1}
+.workspace>.mapsection{grid-column:2;grid-row:1;min-width:0}
+.workspace>.planpanel{grid-column:3;grid-row:1}
+.workspace>.destination{display:none!important}
+.mapstage{height:clamp(420px,62vh,760px)!important}
+@media(max-width:1280px){.workspace{grid-template-columns:minmax(0,1fr) 300px}.workspace>.mission-picker{grid-column:1/-1;grid-row:2}.workspace>.mapsection{grid-column:1}.workspace>.planpanel{grid-column:2}}
+@media(max-width:800px){.workspace{display:flex;flex-direction:column}.workspace>.mission-picker{order:1}.workspace>.mapsection{order:0}.workspace>.planpanel{order:2}.mapstage{height:420px!important}}
+
+/* ---- transport bar ---- */
+.simdeck.transport{margin:8px 0 0;padding:8px 12px 6px;border-left-width:2px}
+.simdeck::after{top:5px;right:6px;width:8px;height:8px}
+.tprow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tprow .cassette{width:46px;height:auto;flex:none}
+.tprow button{margin:0;min-width:0;padding:4px 12px 2px;font-size:20px;width:auto}
+.tprow #simPlay{min-width:110px}
+.tprow #simRestart{padding:4px 10px 2px}
+.tprow #simAbort{font-size:17px}
+.tprate{display:flex;align-items:center;gap:6px;margin:0;min-width:0!important;font-size:14px;letter-spacing:2px;color:var(--phos)}.tprate span{display:none}
+#rateKeys button{font-size:16px;padding:3px 7px 1px}
+.tprow #simScrub{flex:1 1 120px;min-width:90px;margin:0}
+.tprow #simClock{font-size:20px;white-space:nowrap;margin-left:2px}
+#simReadout{margin:4px 0 0;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.deckopts{position:relative}
+.deckopts>summary{list-style:none;cursor:pointer;display:inline-block;color:var(--amber);font-size:19px;padding:4px 10px 2px;background:linear-gradient(#34372f,#1d1f1a);border:1px solid #0a0b09;border-bottom-width:5px;border-radius:4px;letter-spacing:1px;text-transform:uppercase}
+.deckopts>summary::-webkit-details-marker{display:none}
+.deckopts[open]>summary{border-bottom-width:2px;transform:translateY(3px);background:linear-gradient(#181a15,#0c0d0a)}
+.optsbody{position:absolute;right:0;bottom:calc(100% + 10px);width:min(330px,86vw);z-index:70;display:grid;gap:10px;padding:12px;background:#0a0e08;border:2px solid var(--amber-dim);box-shadow:0 10px 30px #000c}
+.optsbody label{display:grid;gap:3px;font-size:15px;letter-spacing:2px;color:var(--phos)}
+.optsbody .two{display:grid;gap:6px}
+
+/* ---- one-line metrics, thin profile ---- */
+.workspace .metrics{display:flex;flex-wrap:wrap;gap:6px 20px;margin:6px 0 0;padding:2px 10px;background:none;border:0}
+.workspace .metrics>div{display:flex;align-items:baseline;gap:6px;background:none;border:0;box-shadow:none;padding:0}
+.workspace .metrics span{font-size:14px;letter-spacing:2px;color:var(--muted)}
+.workspace .metrics strong{font-size:20px;text-shadow:none}.workspace .metrics small{font-size:13px}
+.workspace .profile{margin:4px 0 0;padding:2px 8px;border-width:1px;background:#050804}
+.workspace .profile .paneltitle{display:none}
+#profile{display:block;width:100%;height:56px}
+.walkbar{padding:4px 0}.walkbar #viewCoverage{display:none}.walkbar button{font-size:17px;padding:3px 12px 1px}
+
+/* ---- mission plan (right) ---- */
+.planpanel{position:sticky;top:8px;max-height:calc(100vh - 24px);overflow:auto;padding:12px 14px;background:var(--screen);border:2px solid #2c2e29;box-shadow:inset 0 0 0 1px #000,inset 0 0 26px #1c3a1022;border-radius:3px;scrollbar-width:thin}
+.planhead h2{margin:0 0 8px;font-size:34px;letter-spacing:3px}
+.planempty{font-size:19px;color:var(--muted);line-height:1.3}
+.plansummary{font-size:19px;color:var(--text);margin-bottom:8px}.plansummary strong{color:var(--phos)}.plansummary small{font-size:15px}
+.gauge{margin:6px 0 12px}.gauge small{display:block;margin-top:4px;font-size:14px}
+.gbar{position:relative;height:14px;background:#0b0e09;border:2px solid #34372f;overflow:hidden}
+.gplan{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#1c8a43,#3dff7a)}
+.gres{position:absolute;right:0;top:0;bottom:0;background:repeating-linear-gradient(135deg,#ffb00044 0 4px,transparent 4px 8px)}
+.gnow{position:absolute;top:-2px;bottom:-2px;width:3px;background:var(--amber);box-shadow:0 0 8px var(--amber);transition:left .2s linear}
+.planlist{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.planrow{display:grid;grid-template-columns:34px 1fr;gap:8px;padding:8px 8px 6px;border:2px solid #25271f;background:#0a0e08;cursor:default}
+.planrow[data-pano]{cursor:pointer}.planrow[data-pano]:hover{border-color:var(--amber-dim)}
+.planrow .idx{font-size:24px;color:var(--amber);text-align:center}
+.planrow strong{display:block;font-size:21px;color:var(--amber-hi);line-height:1.05}.planrow small{display:block;font-size:15px}
+.planrow .mk{color:var(--phos)}
+.rowstate{display:block;font-size:15px;color:var(--phos);letter-spacing:2px;min-height:0}.rowstate:empty{display:none}
+.plantask{margin-top:4px;font-size:16px!important;align-items:flex-start}.plantask i{display:none}.plantask em{color:var(--muted);font-style:normal}
+.plantask input[type=checkbox]{margin-top:2px;width:34px;height:18px}.plantask input[type=checkbox]::before{width:13px;height:12px}.plantask input[type=checkbox]:checked::before{left:17px}
+.planrow.active{border-color:var(--phos);box-shadow:0 0 14px #3dff7a44,inset 0 0 14px #3dff7a14}
+.planrow.done{opacity:.6}.planrow.done strong{color:#c9a65a}
+.planpanel.stale::before{content:'Settings changed · regenerate to update';display:block;margin-bottom:8px;padding:4px 8px;color:#1a1000;background:var(--amber);font-size:16px}
+.planpanel.stale #planBody{opacity:.5}
+#routeNotes{margin-top:12px}#routeNotes .notice{font-size:16px;padding:8px 10px}
+
+/* ---- folded sections below the map ---- */
+.fold>summary,.logpanel>summary,.feedpanel>summary{cursor:pointer;font-size:20px;letter-spacing:2px;text-transform:uppercase;color:var(--amber)}
+.fold,.logpanel,.feedpanel{padding:8px 14px}
+.itinerary.fold{margin-top:14px}.opsgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+@media(max-width:900px){.opsgrid{grid-template-columns:1fr}}
+
+/* ---- draggable minimap ---- */
+.minimap{cursor:grab;touch-action:none}.minimap:active{cursor:grabbing}.minimap:focus-visible{outline:2px solid var(--phos);outline-offset:2px}
+.choice span,.choice small{color:var(--text)}.choice.added{background:linear-gradient(#10240f,#08130a)}.choice.added span{color:var(--phos)}
+.pagehead{padding-top:8px;padding-bottom:4px}.pagehead h1{font-size:34px;margin:0}
+#routeNotes .notice,#routeNotes p,#routeNotes li{font-family:var(--mono);font-size:13px;line-height:1.35}
+details.why summary{font-size:18px}
+.optsbody .two{grid-template-columns:1fr!important}.optsbody .drills{margin:0}.optsbody .drills summary{margin-bottom:6px}.optsbody button{white-space:normal;font-size:17px}
+/* keep the whole workspace within one screen: tighter header block, smaller map so the transport bar is visible */
+header{min-height:60px!important}
+.pagehead{margin:0 0 4px!important}.pagehead h1{font-size:30px!important}.pagehead .eyebrow{font-size:14px}
+.mapstage{height:clamp(300px,calc(100vh - 380px),620px)!important}
+.workspace .mission-picker{max-height:calc(100vh - 150px);overflow:auto}
+.planpanel .planrow strong{font-size:19px}.plansummary{font-size:17px}
+.mapbar{padding:6px 10px}
+/* CAPCOM */
+.capcom{margin-top:12px;border:2px solid #3a2e0a;background:#080b06;padding:6px 10px}.capcom>summary{cursor:pointer;font-size:22px;letter-spacing:3px;color:var(--phos)}.capcom>summary small{font-size:13px;letter-spacing:1px;color:var(--muted);margin-left:6px}
+#capLog{max-height:190px;overflow:auto;display:grid;gap:6px;margin:6px 0;font-family:var(--mono);font-size:13px;line-height:1.35}
+.capmsg b{color:var(--amber);margin-right:4px}.capmsg.you b{color:var(--phos)}.capmsg em{font-style:normal;font-size:10px;color:var(--muted);border:1px solid #3a2e0a;padding:0 3px;margin-right:4px}.capmsg span{color:#ffd890}
+.capchips{display:flex;flex-wrap:wrap;gap:4px}.capchips button{font-size:15px;padding:2px 7px 0;border-bottom-width:3px}
+#capForm{display:flex;gap:6px;margin-top:6px}#capForm input{flex:1;min-width:0;font-size:14px;padding:4px 6px}#capForm button{font-size:16px;padding:2px 10px 0}
+.capcomline{font-family:var(--mono);font-size:15px;line-height:1.4;color:var(--phos);border-left:3px solid var(--phos);padding:6px 10px;margin:10px 0;background:#0a1a0d}
+#taskCapcom:empty{display:none}
+/* ---- mission list (left) ---- */
+.missionlist{list-style:none;margin:8px 0;padding:0;display:grid;gap:8px;max-height:46vh;overflow:auto}
+.missionlist>li{border:2px solid #2c2e29;background:#0a0e08;padding:6px 8px}
+.mhead{display:flex;align-items:baseline;gap:8px}.mhead strong{flex:1;font-size:15px;color:var(--amber-hi)}.mhead small{font-size:14px}
+.mhead .x,.chip button{padding:0 6px!important;font-size:13px!important;min-width:0}
+.mtasks{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.chip{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--phos-dim);background:#0b2a14;color:var(--phos);font-size:14px;padding:1px 4px 1px 6px}
+.chip button{background:none;border:0;box-shadow:none!important;color:var(--phos);cursor:pointer}
+#missionBasket{margin:10px 0}#missionBasket p{margin:0 0 6px}#buildMission{width:100%;font-size:16px!important;padding:10px!important}
+.poi-bubble{display:none!important}.poi-marker.picked .poi-dot{background:var(--phos)!important;box-shadow:0 0 0 3px #000,0 0 0 5px var(--phos)}
+/* ---- POI / point bubble: class badge first, then the explanation, then tasks ---- */
+.pinbubble{width:min(360px,92vw);max-height:80%;overflow:auto}
+.siteclass{display:flex;align-items:center;gap:10px;margin:6px 0 4px}.siteclass strong{font-size:16px;display:block}
+.clsbadge{--c:#3dff7a;font-family:var(--pix);font-size:11px;padding:8px 8px 6px;background:var(--c);color:#050804;border:2px solid #000;box-shadow:3px 3px 0 #000;white-space:nowrap}.clsbadge.none{background:#555;color:#ddd}
+.siteexplain{font-family:var(--mono);font-size:16px;line-height:1.25;color:#ffd890;margin:4px 0 8px}
+.siterecs{list-style:none;margin:6px 0;padding:0;display:grid;gap:6px}
+.taskadd{display:flex;width:100%;align-items:center;gap:8px;text-align:left;text-transform:none;font-size:15px!important}.taskadd .tname{flex:1}.taskadd em{font-style:normal;color:var(--muted);font-size:13px}.taskadd .plus{font-family:var(--pix);font-size:12px;width:16px}
+.taskadd.on{background:linear-gradient(#0f3a1c,#0a2a14)!important;color:var(--phos)!important;border-color:var(--phos-dim)}
+.siterecs small{display:block;margin:2px 0 0 2px;font-size:14px}
+.sitedata{margin:6px 0}.sitedata summary{cursor:pointer;font-size:14px;color:var(--amber)}
+/* ---- map legend + class bar ---- */
+.legend{display:grid;gap:3px;margin-top:6px;font-size:13px;color:var(--text)}.legend i{display:inline-block;width:12px;height:12px;margin-right:6px;vertical-align:middle;border:1px solid #000}.legend i.dash{background:none;border:2px dashed #3dff7a}.legend i.sq{background:#ffd987}
+.classbar{margin:8px 0 10px}.cbar{display:flex;height:12px;border:2px solid #34372f;background:#0b0e09}.cbar i{display:block;height:100%}
+.clegend{display:flex;flex-wrap:wrap;gap:2px 10px;margin-top:4px;font-size:14px;font-family:var(--mono)}.clegend b{display:inline-block;width:9px;height:9px;margin-right:4px;border:1px solid #000}
+.musicvol{display:inline-flex;align-items:center;gap:6px}.musicvol input{width:90px}
+#demPane{position:absolute;inset:0;z-index:21;background:#2a1d15}#demPane[hidden]{display:none}#demStage{position:absolute;inset:0}.dem3d-canvas{width:100%;height:100%;display:block;touch-action:none}
+.demhud{position:absolute;left:8px;right:8px;top:8px;display:flex;flex-direction:column;gap:4px;pointer-events:none}.demhud>*{pointer-events:auto}
+.demrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#101815ee;border:2px solid #ffc247;padding:6px 8px;font-size:12px}.demrow label{display:flex;gap:6px;align-items:center}.demtitle{font-family:'Press Start 2P',monospace;font-size:10px;color:#ffc247}
+#demViews{display:flex;gap:0}#demViews button[aria-pressed=true]{background:#ffc247;color:#101815}#demNote{background:#101815cc;padding:4px 8px;max-width:640px;line-height:1.35;font-size:11px}
+#demFail{position:absolute;inset:auto 0 40% 0;text-align:center;padding:20px;background:#101815}#demToggle[aria-pressed=true]{background:#ffc247;color:#101815}
+.demrow label,.demrow button{white-space:nowrap}
+.altroutes{margin:8px 0;border:2px solid var(--amber,#ffc247);padding:6px 8px}.altroutes summary{cursor:pointer;font-family:'Press Start 2P',monospace;font-size:10px}.altcard{border-top:1px dashed #7fd6ff;margin-top:8px;padding-top:6px;font-size:12px}.altcard h4{margin:0;color:#7fd6ff;font-size:13px}.altcard.on{background:#7fd6ff18}.altnums{display:flex;flex-wrap:wrap;gap:4px 10px;margin:4px 0;font-family:'VT323',monospace;font-size:15px}.altcard p{margin:4px 0;line-height:1.35}.altroutes .note{font-size:11px;opacity:.85;line-height:1.35}
+.caprow{display:flex;align-items:center;gap:8px;margin:4px 0}.caprow small{opacity:.7;font-size:11px}#alertsToggle[aria-pressed=false]{opacity:.6;text-decoration:line-through}
+.alertmsg{border-left:4px solid #ffc247;padding-left:6px}.alertmsg.sev-critical{border-color:#ff5a3c;background:#ff5a3c18}.alertmsg.sev-warning{border-color:#ffc247}.alertmsg .feedactions{margin-top:4px}
+#demPane.cinematic{position:fixed;inset:0;z-index:100;width:100vw;height:100vh}.scene-arrival .demhud{display:none}
+#overlayMenu{z-index:40}#minimap{z-index:25}
+.minimap{top:auto!important;bottom:64px;right:12px}
+.slot{display:inline-flex;align-items:center;justify-content:center;border:2px dashed #7a5a14;color:#ffc24799;overflow:hidden;flex:none;box-sizing:border-box}.slot img,.slot svg{width:100%;height:100%;object-fit:contain}.slot[data-filled=image],.slot[data-filled=lottie]{border:0}
+.slotph{padding:4px;text-align:center;font-family:'Press Start 2P',monospace;font-size:7px;line-height:1.6}.slot-avatar{width:56px;height:56px;image-rendering:pixelated}.slot-wide{width:100%;height:84px;margin:6px 0}
+.planhead{display:flex;gap:10px;align-items:center}
+.demdock{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:#101815;border:2px solid #ffc247;border-top:0;padding:6px 10px;font-size:12px}.demdock[hidden]{display:none}.demdock small{opacity:.75;margin-left:auto}#demElev{font-family:'VT323',monospace;font-size:16px;color:#6cffb0}
+.demtabs{display:flex}.demtabs button[aria-pressed=true]{background:#ffc247;color:#101815}.profdet{margin:8px 0;border:2px solid #7a5a14;padding:6px 8px}.profdet summary{cursor:pointer;font-family:'Press Start 2P',monospace;font-size:10px}.profdet canvas{width:100%;height:90px;display:block;margin-top:6px}
+.demdock label{display:flex;gap:6px;align-items:center;margin:0}.demdock select{min-width:130px}
+#demPane.cinematic{z-index:101}.scene-arrival #demDock{display:none!important}
+
+/* CAPCOM input: wide box above the Send button */
+#capForm{display:flex;flex-direction:column;gap:6px}#capInput{width:100%;box-sizing:border-box;min-height:78px;resize:vertical;font:inherit;line-height:1.35;padding:8px 10px}#capForm .primary{align-self:stretch}
+/* CAPCOM popup notifications (also kept in the log) */
+#capToasts{position:fixed;top:74px;left:50%;transform:translateX(-50%);z-index:300;display:flex;flex-direction:column;gap:8px;width:min(460px,92vw);pointer-events:none}
+.captoast{pointer-events:none;display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:start;background:#0d140c;border:2px solid #7dffc6;box-shadow:0 6px 24px #000a,0 0 0 2px #000;padding:10px 12px;color:#e9eddc;animation:capin .28s ease-out}
+.captoast.sev-warning{border-color:#ffb81c}.captoast.sev-critical{border-color:#ff5a47;animation:capin .28s ease-out,cappulse 1s 2}
+.captoast img{width:44px;height:44px;image-rendering:pixelated}.captoast b{display:block;font-size:11px;letter-spacing:.12em;color:#7dffc6;text-transform:uppercase}.captoast.sev-warning b{color:#ffb81c}.captoast.sev-critical b{color:#ff8a7a}
+.captoast span{font-size:13px;line-height:1.35}.captoast button{pointer-events:auto;background:none;border:0;color:#aab29a;cursor:pointer;font-size:14px}
+.captoast.out{opacity:0;transform:translateY(-8px);transition:.25s}
+@keyframes capin{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}@keyframes cappulse{50%{box-shadow:0 0 0 4px #ff5a4766,0 6px 24px #000a}}
+@media(prefers-reduced-motion:reduce){.captoast,.captoast.sev-critical{animation:none}}
+/* Live views */
+.liveviews ul{list-style:none;margin:6px 0;padding:0;display:grid;gap:6px}
+.liveviews li button{display:grid;grid-template-columns:64px 1fr auto;gap:8px;align-items:center;width:100%;text-align:left;background:#0d140c;border:1px solid #3a4a35;padding:4px;color:#e9eddc;cursor:pointer}
+.liveviews li button:hover,.liveviews li button:focus-visible{border-color:#ffb81c}
+.liveviews .lvthumb{width:64px;height:40px;object-fit:cover;background:#1a2418}.liveviews .lvname{font-size:12px;line-height:1.2}.liveviews .lvname small{display:block;color:#aab29a}
+.liveviews .lvdist{font-size:12px;color:#7dffc6;text-align:right;white-space:nowrap}.lvnote{font-size:10px;color:#8a927c;margin:2px 0 0}
+/* pointer to the 3D crater view */
+#demToggle{position:relative}
+#demToggle.hint{animation:hintglow 1.6s ease-in-out infinite;border-color:#7dffc6}
+#demToggle.hint::after{content:"▲ SEE THE CRATER IN 3D";position:absolute;left:50%;top:calc(100% + 6px);transform:translateX(-50%);white-space:nowrap;font-size:10px;letter-spacing:.1em;color:#0b0e09;background:#7dffc6;padding:3px 7px;z-index:30;pointer-events:none;animation:hintbob 1.2s ease-in-out infinite}
+@keyframes hintglow{50%{box-shadow:0 0 0 3px #7dffc666}}@keyframes hintbob{50%{transform:translateX(-50%) translateY(4px)}}
+@media(prefers-reduced-motion:reduce){#demToggle.hint,#demToggle.hint::after{animation:none}}
+
+/* Terrain AI */
+#panoViewer{position:relative}#panoAI{position:absolute;left:0;top:0;height:100%;width:auto;pointer-events:none;image-rendering:auto}
+.aibar{padding:6px 10px;border-top:1px solid #3a4a35;font-size:12px}.aibar .aitoggle{font-weight:700;color:#7dffc6;margin-right:12px}
+.aichip{display:inline-flex;align-items:center;gap:5px;margin-right:12px}.aichip i{width:12px;height:12px;display:inline-block;border:1px solid #0008}
+#panoAINote{margin:4px 0 0;font-size:11px;color:#aab29a;line-height:1.35}
+.lvbar{display:flex;height:5px;margin-top:4px;background:#1a2418;width:100%}.lvbar b{display:block;height:100%}
+
+/* Route notes: numbered map markers and their popup */
+#routeNotes{position:absolute;inset:0;z-index:5;pointer-events:none}
+.rnote{position:absolute;width:22px;height:22px;margin:-11px 0 0 -11px;padding:0;border-radius:50%;pointer-events:auto;cursor:pointer;font:700 12px/20px ui-monospace,monospace;text-align:center;color:#06140c;background:#ffb81c;border:2px solid #06140c;box-shadow:0 0 0 2px #ffb81c99}
+.rnote.stop,.rnote.return{background:#7dffc6;box-shadow:0 0 0 2px #7dffc699}.rnote.slope{background:#ff8a5c;box-shadow:0 0 0 2px #ff8a5c99}.rnote.open,.rnote:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.notepop{position:absolute;z-index:7;max-height:70%;overflow:auto;background:#101c14f2;color:#e9eddc;border:1px solid #7dffc6;padding:10px 12px;font:13px/1.4 system-ui,sans-serif;box-shadow:0 6px 24px #000a}
+.notepop header{display:flex;gap:8px;align-items:center}.notepop header strong{flex:1;font-size:14px}.rnclose{background:none;border:0;color:#9aa38c;cursor:pointer;font-size:16px}
+.rnbadge{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#ffb81c;color:#06140c;font:700 12px ui-monospace,monospace}.rnbadge.stop,.rnbadge.return{background:#7dffc6}.rnbadge.slope{background:#ff8a5c}
+.rnsum{margin:8px 0 6px}.rnwhy{margin:0;padding:0;list-style:none;display:grid;gap:5px}.rnwhy li{padding-left:8px;border-left:2px solid #3a4f3d;color:#cfd6c2}.rnwhy b{display:block;color:#ffb81c;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.rnai{margin-top:8px}.rnai small{color:#7dffc6;font-weight:700}.rnai p{margin:2px 0 0;border:1px dashed #3a4f3d;padding:6px}.notepop footer{margin-top:8px}.rnask{padding:6px 10px;background:#233626;color:#e9eddc;border:1px solid #7dffc6;cursor:pointer;font:inherit}.rnask:disabled{opacity:.6}
+.notepop{font-size:12px;line-height:1.35}.notepop .rnwhy li{padding-left:6px}.notepop .rnwhy b{font-size:10px}
+#panoAILive{padding:4px 10px;margin:0 12px 0 0;font:inherit;font-weight:700;cursor:pointer;background:#233626;color:#e9eddc;border:1px solid #7dffc6}#panoAILive:disabled{opacity:.6;cursor:progress}#panoAILiveStatus{margin:4px 0 0;color:#7dffc6;font-weight:700}#panoAILiveStatus:empty{display:none}
+.aistats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}.aistats div{border:1px solid #3a4f3d;padding:8px}.aistats b{display:block;font-size:26px;color:#7dffc6}.aistats small{color:#9aa38c}@media(max-width:600px){.aistats{grid-template-columns:1fr}}
+
+.slot img{image-rendering:pixelated}#demVR{border-color:#7dffc6;color:#7dffc6}#demVR:disabled{opacity:.55}#demVRStatus{font-size:13px;color:var(--muted);max-width:340px;display:inline-block;vertical-align:middle;margin-left:8px}
+
+.acronym{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0;font-family:'Press Start 2P',monospace;line-height:1.5}.acronym .acr{color:#e9eddc;font-size:13px;letter-spacing:1px}.acronym .acr b{color:#ffc247;font-size:20px}
+#introBrand{display:none}
+body.intro-active #introBrand{display:flex;flex-direction:column;align-items:center;gap:10px;position:fixed;left:50%;top:13%;transform:translateX(-50%);z-index:9000;pointer-events:none;text-align:center;text-shadow:0 2px 12px #000;animation:introBrand 6.5s ease forwards}
+#introBrand strong{font-weight:400;font-family:'Press Start 2P',monospace;font-size:clamp(28px,6vw,64px);color:#ffc247;letter-spacing:6px}
+#introBrand .acronym{justify-content:center}
+@keyframes introBrand{0%{opacity:0}18%{opacity:1}72%{opacity:1}100%{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){body.intro-active #introBrand{animation:none}}
+@media (max-width:700px){.acronym .acr{font-size:10px}.acronym .acr b{font-size:15px}}

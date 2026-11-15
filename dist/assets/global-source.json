@@ -1,0 +1,12 @@
+{
+  "name": "Mars Global Surveyor MOLA color-shaded relief",
+  "bounds": [
+    -180,
+    -90,
+    180,
+    90
+  ],
+  "source": "https://trek.nasa.gov/tiles/Mars/EQ/Mars_MGS_MOLA_ClrShade_merge_global_463m/1.0.0/default/default028mm",
+  "tileLevel": 2,
+  "note": "Global elevation context; local mission data remains in Jezero."
+}

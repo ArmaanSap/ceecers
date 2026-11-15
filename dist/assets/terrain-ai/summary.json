@@ -1,0 +1,436 @@
+{
+ "model": "SegFormer-B0 (nvidia/mit-b0 encoder) fine-tuned on AI4Mars",
+ "classes": [
+  "loose",
+  "rock"
+ ],
+ "colors": {
+  "loose": "#e0b050",
+  "rock": "#6ea8ff"
+ },
+ "panoramas": {
+  "1": {
+   "name": "Butler Landing 1",
+   "share": {
+    "loose": 91.8,
+    "rock": 8.2
+   },
+   "analysedPct": 59.0,
+   "raw": {
+    "soil": 79.2,
+    "bedrock": 4.2,
+    "sand": 12.6,
+    "big_rock": 4.0
+   }
+  },
+  "2": {
+   "name": "Horizon 1",
+   "share": {
+    "loose": 94.8,
+    "rock": 5.2
+   },
+   "analysedPct": 61.1,
+   "raw": {
+    "soil": 27.1,
+    "bedrock": 4.3,
+    "sand": 67.7,
+    "big_rock": 0.9
+   }
+  },
+  "3": {
+   "name": "Van Zyl",
+   "share": {
+    "loose": 79.4,
+    "rock": 20.6
+   },
+   "analysedPct": 65.8,
+   "raw": {
+    "soil": 53.1,
+    "bedrock": 19.9,
+    "sand": 26.3,
+    "big_rock": 0.7
+   }
+  },
+  "4": {
+   "name": "Butler Landing 2",
+   "share": {
+    "loose": 56.9,
+    "rock": 43.0
+   },
+   "analysedPct": 52.0,
+   "raw": {
+    "soil": 47.0,
+    "bedrock": 42.8,
+    "sand": 9.9,
+    "big_rock": 0.2
+   }
+  },
+  "5": {
+   "name": "Horizon 2",
+   "share": {
+    "loose": 99.5,
+    "rock": 0.4
+   },
+   "analysedPct": 56.9,
+   "raw": {
+    "soil": 73.9,
+    "bedrock": 0.3,
+    "sand": 25.6,
+    "big_rock": 0.1
+   }
+  },
+  "6": {
+   "name": "Horizon 3",
+   "share": {
+    "loose": 88.7,
+    "rock": 11.3
+   },
+   "analysedPct": 53.2,
+   "raw": {
+    "soil": 65.3,
+    "bedrock": 10.2,
+    "sand": 23.4,
+    "big_rock": 1.1
+   }
+  },
+  "7": {
+   "name": "Horizon 4",
+   "share": {
+    "loose": 90.6,
+    "rock": 9.4
+   },
+   "analysedPct": 56.3,
+   "raw": {
+    "soil": 64.6,
+    "bedrock": 8.1,
+    "sand": 26.0,
+    "big_rock": 1.3
+   }
+  },
+  "8": {
+   "name": "Seitah 1",
+   "share": {
+    "loose": 77.7,
+    "rock": 22.3
+   },
+   "analysedPct": 62.4,
+   "raw": {
+    "soil": 50.4,
+    "bedrock": 21.2,
+    "sand": 27.3,
+    "big_rock": 1.1
+   }
+  },
+  "9": {
+   "name": "Martre Outcrop 1",
+   "share": {
+    "loose": 68.8,
+    "rock": 31.2
+   },
+   "analysedPct": 57.4,
+   "raw": {
+    "soil": 33.3,
+    "bedrock": 28.2,
+    "sand": 35.5,
+    "big_rock": 3.0
+   }
+  },
+  "10": {
+   "name": "Martre Outcrop 2",
+   "share": {
+    "loose": 69.9,
+    "rock": 30.1
+   },
+   "analysedPct": 60.2,
+   "raw": {
+    "soil": 31.9,
+    "bedrock": 26.5,
+    "sand": 38.0,
+    "big_rock": 3.6
+   }
+  },
+  "11": {
+   "name": "Village Outcrop 1",
+   "share": {
+    "loose": 49.8,
+    "rock": 50.2
+   },
+   "analysedPct": 52.3,
+   "raw": {
+    "soil": 0.7,
+    "bedrock": 47.9,
+    "sand": 49.1,
+    "big_rock": 2.3
+   }
+  },
+  "12": {
+   "name": "Village Outcrop 2",
+   "share": {
+    "loose": 55.0,
+    "rock": 44.9
+   },
+   "analysedPct": 62.3,
+   "raw": {
+    "soil": 3.8,
+    "bedrock": 44.7,
+    "sand": 51.2,
+    "big_rock": 0.2
+   }
+  },
+  "13": {
+   "name": "Seitah 2",
+   "share": {
+    "loose": 83.2,
+    "rock": 16.7
+   },
+   "analysedPct": 61.6,
+   "raw": {
+    "soil": 20.6,
+    "bedrock": 15.7,
+    "sand": 62.6,
+    "big_rock": 1.0
+   }
+  },
+  "14": {
+   "name": "Seitah 3",
+   "share": {
+    "loose": 80.0,
+    "rock": 20.1
+   },
+   "analysedPct": 62.7,
+   "raw": {
+    "soil": 7.3,
+    "bedrock": 17.4,
+    "sand": 72.7,
+    "big_rock": 2.7
+   }
+  },
+  "15": {
+   "name": "Adziili Crater",
+   "share": {
+    "loose": 97.0,
+    "rock": 3.0
+   },
+   "analysedPct": 55.5,
+   "raw": {
+    "soil": 57.9,
+    "bedrock": 1.6,
+    "sand": 39.1,
+    "big_rock": 1.4
+   }
+  },
+  "16": {
+   "name": "Sid and Chal Rocks",
+   "share": {
+    "loose": 75.6,
+    "rock": 24.3
+   },
+   "analysedPct": 56.5,
+   "raw": {
+    "soil": 48.4,
+    "bedrock": 16.0,
+    "sand": 27.2,
+    "big_rock": 8.3
+   }
+  },
+  "17": {
+   "name": "Rose River Falls",
+   "share": {
+    "loose": 95.9,
+    "rock": 4.2
+   },
+   "analysedPct": 56.9,
+   "raw": {
+    "soil": 89.0,
+    "bedrock": 1.4,
+    "sand": 6.9,
+    "big_rock": 2.8
+   }
+  },
+  "18": {
+   "name": "Rockytop Scarp",
+   "share": {
+    "loose": 69.7,
+    "rock": 30.3
+   },
+   "analysedPct": 55.5,
+   "raw": {
+    "soil": 57.5,
+    "bedrock": 23.2,
+    "sand": 12.2,
+    "big_rock": 7.1
+   }
+  },
+  "19": {
+   "name": "Skinner Ridge",
+   "share": {
+    "loose": 70.4,
+    "rock": 29.6
+   },
+   "analysedPct": 54.6,
+   "raw": {
+    "soil": 37.1,
+    "bedrock": 22.8,
+    "sand": 33.3,
+    "big_rock": 6.8
+   }
+  },
+  "20": {
+   "name": "Wildcat Ridge",
+   "share": {
+    "loose": 85.1,
+    "rock": 15.0
+   },
+   "analysedPct": 47.9,
+   "raw": {
+    "soil": 77.5,
+    "bedrock": 8.0,
+    "sand": 7.6,
+    "big_rock": 7.0
+   }
+  },
+  "21": {
+   "name": "Enchanted Lake",
+   "share": {
+    "loose": 78.4,
+    "rock": 21.5
+   },
+   "analysedPct": 59.4,
+   "raw": {
+    "soil": 26.7,
+    "bedrock": 19.4,
+    "sand": 51.7,
+    "big_rock": 2.1
+   }
+  },
+  "22": {
+   "name": "Hidden Harbor",
+   "share": {
+    "loose": 54.0,
+    "rock": 46.0
+   },
+   "analysedPct": 58.4,
+   "raw": {
+    "soil": 38.5,
+    "bedrock": 40.6,
+    "sand": 15.5,
+    "big_rock": 5.4
+   }
+  },
+  "24": {
+   "name": "Three Forks Depot 2",
+   "share": {
+    "loose": 85.2,
+    "rock": 14.8
+   },
+   "analysedPct": 67.1,
+   "raw": {
+    "soil": 78.4,
+    "bedrock": 0.6,
+    "sand": 6.8,
+    "big_rock": 14.2
+   }
+  },
+  "25": {
+   "name": "Belva",
+   "share": {
+    "loose": 85.3,
+    "rock": 14.7
+   },
+   "analysedPct": 63.7,
+   "raw": {
+    "soil": 68.0,
+    "bedrock": 11.5,
+    "sand": 17.3,
+    "big_rock": 3.2
+   }
+  },
+  "26": {
+   "name": "Stone Man Pass",
+   "share": {
+    "loose": 50.9,
+    "rock": 49.0
+   },
+   "analysedPct": 61.4,
+   "raw": {
+    "soil": 22.8,
+    "bedrock": 45.4,
+    "sand": 28.1,
+    "big_rock": 3.6
+   }
+  },
+  "27": {
+   "name": "Snowdrift Peak",
+   "share": {
+    "loose": 94.5,
+    "rock": 5.6
+   },
+   "analysedPct": 74.0,
+   "raw": {
+    "soil": 78.1,
+    "bedrock": 3.2,
+    "sand": 16.4,
+    "big_rock": 2.4
+   }
+  },
+  "28": {
+   "name": "Lookout Mountain",
+   "share": {
+    "loose": 76.4,
+    "rock": 23.6
+   },
+   "analysedPct": 60.1,
+   "raw": {
+    "soil": 64.3,
+    "bedrock": 14.3,
+    "sand": 12.1,
+    "big_rock": 9.3
+   }
+  },
+  "29": {
+   "name": "Dream Lake",
+   "share": {
+    "loose": 72.5,
+    "rock": 27.5
+   },
+   "analysedPct": 40.9,
+   "raw": {
+    "soil": 56.0,
+    "bedrock": 26.1,
+    "sand": 16.5,
+    "big_rock": 1.4
+   }
+  },
+  "30": {
+   "name": "Howard Mountain",
+   "share": {
+    "loose": 98.8,
+    "rock": 1.2
+   },
+   "analysedPct": 27.6,
+   "raw": {
+    "soil": 82.1,
+    "bedrock": 0.1,
+    "sand": 16.7,
+    "big_rock": 1.1
+   }
+  }
+ },
+ "rawClasses": [
+  "soil",
+  "bedrock",
+  "sand",
+  "big_rock"
+ ],
+ "handCheck": {
+  "points": 74,
+  "skipped": 6,
+  "fourClassAccuracy": 0.5,
+  "looseVsRockAccuracy": 0.81,
+  "looseCalledRock": 0,
+  "looseTotal": 24,
+  "rockCalledLoose": 14,
+  "rockTotal": 50,
+  "note": "One labeller, points sampled evenly across predicted classes; roughly +/-10 points. Soil vs sand and bedrock vs big rock were unreliable on Mastcam-Z, so the app shows two groups."
+ }
+}

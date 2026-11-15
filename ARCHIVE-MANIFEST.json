@@ -1,0 +1,455 @@
+{
+  "project": "Marswalk",
+  "format": 1,
+  "built_at": "2026-11-14T16:29:45.759384+00:00",
+  "source_fingerprint": "b226eef68355c0b961c8404a869de409389e0fbf6f336254f4748a0e7b792cdd",
+  "files": [
+    {
+      "path": ".githooks/pre-commit",
+      "bytes": 173,
+      "sha256": "0fd08d242367af34928020eda3f7c0224d8ac28db1c6a7b9f0509ec97160ca9c"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 53,
+      "sha256": "d0d8af404e3a4539341192c68979399b2bdde2d796dca4dd63483c5ff550c712"
+    },
+    {
+      "path": ".openai/hosting.json",
+      "bytes": 106,
+      "sha256": "ff0543d4d51f7f37491ea22b570840a3961f11204bb9de80c3786f77f9b45f32"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 1266,
+      "sha256": "439ed284fe231308dc61a0ea95b3877fa2d0bdec5197ee87b6e00847f46eb33a"
+    },
+    {
+      "path": "README.md",
+      "bytes": 10152,
+      "sha256": "6596d0fa0b83cc8c6156399768bdfdbade8bbb0af210d827255b379ca6037ad6"
+    },
+    {
+      "path": "dist/app.js",
+      "bytes": 43157,
+      "sha256": "3ebf661e087a8c54f4409be7a05759fe41994e8e68093e89d5ff0e3e30eaee98"
+    },
+    {
+      "path": "dist/assets/color-source.json",
+      "bytes": 618,
+      "sha256": "5e35fc51a4522ff67d7c728101bbfe48079381582374497924b13e034f71e1fb"
+    },
+    {
+      "path": "dist/assets/color.jpg",
+      "bytes": 608408,
+      "sha256": "73ecc1c996ef6201de5020f87e809462b7c341f71538890e24f19216fca6a9d1"
+    },
+    {
+      "path": "dist/assets/crism.json",
+      "bytes": 289684,
+      "sha256": "720a975740eff4c88f1d5f1567ab2efa51ab7098a6b28ccf6f7ffebc333033d0"
+    },
+    {
+      "path": "dist/assets/ctx.jpg",
+      "bytes": 306323,
+      "sha256": "d2545b1dcf8b7a405d092e7feb7d2d9aff021d156dd49fa561ca07c7cdfb33a9"
+    },
+    {
+      "path": "dist/assets/ctx.json",
+      "bytes": 167408,
+      "sha256": "a7ab0f5f7f8876ce87e881ce3f5e38332a01d4f063952f551adda74d7243421a"
+    },
+    {
+      "path": "dist/assets/data.json",
+      "bytes": 10112,
+      "sha256": "96b801d649fa9936ca32ab13bb3dbd184e79f7137ace5d450e4e25d3dd19677d"
+    },
+    {
+      "path": "dist/assets/dtms.json",
+      "bytes": 37578,
+      "sha256": "29d20b2d061f1d18c2be10af5b6c4b42ce2879c1682268dbe9f726e63cc92988"
+    },
+    {
+      "path": "dist/assets/frozen-star.mp3",
+      "bytes": 3131339,
+      "sha256": "5255bf67672b3953a48a539e2bd62196698cddcf1d36044ee9aeb98c4f07f9c9"
+    },
+    {
+      "path": "dist/assets/global-source.json",
+      "bytes": 329,
+      "sha256": "d12aa8550a7943d9ff1aee701768b606071c1848e2f0ad097f012d6610b93368"
+    },
+    {
+      "path": "dist/assets/globe-source.json",
+      "bytes": 371,
+      "sha256": "11469a07d3eeebb5b9fe04bdad7769d76fa42f37aa5e49c8bdb7e4e2ab0cee07"
+    },
+    {
+      "path": "dist/assets/hirise.json",
+      "bytes": 315876,
+      "sha256": "b8842f2899f220c7eb7d0a8043dab4ee870f080c8c845da6d4eb48acc24482a0"
+    },
+    {
+      "path": "dist/assets/mars-color.jpg",
+      "bytes": 1294496,
+      "sha256": "61f88584fa2f4cfdcf591db07df21cd257c7bccf78c2524f5fb0f69d3c14b5c9"
+    },
+    {
+      "path": "dist/assets/mars-global.jpg",
+      "bytes": 799942,
+      "sha256": "c2c2920c428081761b977e329a8dec59a0067e37d73ae40a98792ab6f09e081c"
+    },
+    {
+      "path": "dist/assets/mola.jpg",
+      "bytes": 86253,
+      "sha256": "d3af3e68835ab12bf8c1c82957e53689004b11efe7fadbb63592f38abfbe6a9b"
+    },
+    {
+      "path": "dist/assets/orbital.jpg",
+      "bytes": 669094,
+      "sha256": "09b7e3aecf302815b673f40347fea5ce9a4fd46f477b0fdc35afd4056403b39c"
+    },
+    {
+      "path": "dist/assets/pano-1.jpg",
+      "bytes": 570469,
+      "sha256": "ed3361fdff32f55046948812628b76ba171a00bdb226d9f112cb313bb0339c57"
+    },
+    {
+      "path": "dist/assets/pano-10.jpg",
+      "bytes": 1435434,
+      "sha256": "c5ac785579a0ff0935c5448a97d0a805a2bab03c69e31046ff3311f19a1f60eb"
+    },
+    {
+      "path": "dist/assets/pano-11.jpg",
+      "bytes": 518313,
+      "sha256": "d41fe15e917611b3850ed8738d5de44ba6309d4fe0d7e772731a420f3ce2f30f"
+    },
+    {
+      "path": "dist/assets/pano-12.jpg",
+      "bytes": 1229604,
+      "sha256": "b571193db655bf91ab2baed32e017bae4a714c466d054694ce081941933e655b"
+    },
+    {
+      "path": "dist/assets/pano-13.jpg",
+      "bytes": 1597480,
+      "sha256": "a9abb4167ac6755564f960edf82383f6e5bd0849a90070fb81e68f91e1f5cd7d"
+    },
+    {
+      "path": "dist/assets/pano-14.jpg",
+      "bytes": 280379,
+      "sha256": "37b8691696593ccaa1ceb495016c3acadf179845c28030b5b2123e25daf6d545"
+    },
+    {
+      "path": "dist/assets/pano-15.jpg",
+      "bytes": 275995,
+      "sha256": "d89f750809e8ef495084e39e118016df36b3fe1ecdf534fd48f1a5d6592fcd4c"
+    },
+    {
+      "path": "dist/assets/pano-16.jpg",
+      "bytes": 398246,
+      "sha256": "779492a140a6f5e998f377ddc0f57e249c51b0fc730c57fe78c7c444f15bd33a"
+    },
+    {
+      "path": "dist/assets/pano-17.jpg",
+      "bytes": 504792,
+      "sha256": "330b01c1d94e2e7b898df723496ed4f79c72df6adab4ef2124941bcf4cb785f0"
+    },
+    {
+      "path": "dist/assets/pano-18.jpg",
+      "bytes": 2089015,
+      "sha256": "7ccf8e8496b59240e64eadf6303e47180f4d287a2bd65e98df2d304ea9262ebc"
+    },
+    {
+      "path": "dist/assets/pano-19.jpg",
+      "bytes": 507813,
+      "sha256": "7ae1d55babebc7bdb592504725071f0a03a15834d0fada4ce9ae88ba5064a331"
+    },
+    {
+      "path": "dist/assets/pano-2.jpg",
+      "bytes": 154423,
+      "sha256": "d2d7b1412c352c818f37cacaa07fa55e2a5ae52184d6b7eff518082acde50e78"
+    },
+    {
+      "path": "dist/assets/pano-20.jpg",
+      "bytes": 476696,
+      "sha256": "ba722d8a7d28925c519464d0253f94bdddcd5146829e6004583e18b75364910c"
+    },
+    {
+      "path": "dist/assets/pano-21.jpg",
+      "bytes": 355271,
+      "sha256": "f1602b725aa2c2a0894214f2b0782ade61e3321dc7e8b78852d8238c8419d129"
+    },
+    {
+      "path": "dist/assets/pano-22.jpg",
+      "bytes": 549274,
+      "sha256": "ac211651920d7f5801288b4870102833e0330a3cc8b32465f2b3ba97413cd2ae"
+    },
+    {
+      "path": "dist/assets/pano-24.jpg",
+      "bytes": 605920,
+      "sha256": "c873a28893ff891641f8c801fd19f8badca7bd9087fdea241357ef3faf0b99e5"
+    },
+    {
+      "path": "dist/assets/pano-25.jpg",
+      "bytes": 441706,
+      "sha256": "96f2a06aebb12557f7984b7156d70e1f681b9bb3515ef6ca2c5c97242f0b6424"
+    },
+    {
+      "path": "dist/assets/pano-26.jpg",
+      "bytes": 419420,
+      "sha256": "94c652308aaa8f8b8923f727d6f9feddb8690e55b4c86446a71d23f778d3b98c"
+    },
+    {
+      "path": "dist/assets/pano-27.jpg",
+      "bytes": 233591,
+      "sha256": "1cde00c41ff41e6aecfc8d9502c36d218f2a1b58a967a2e5c5200fff8c0b7748"
+    },
+    {
+      "path": "dist/assets/pano-28.jpg",
+      "bytes": 448969,
+      "sha256": "73f7a62cd792551d372a49ab82fa5ca738c133b5e57b0693ef7288c4b64c6e71"
+    },
+    {
+      "path": "dist/assets/pano-29.jpg",
+      "bytes": 982760,
+      "sha256": "f3e5891c5b4baad70ff856f4af10c072ed81ea14e0c189954d22a4b9bd709078"
+    },
+    {
+      "path": "dist/assets/pano-3.jpg",
+      "bytes": 1452393,
+      "sha256": "6362aa651137f0dbd4407682a7ac565d11843c9b42d4ee0284606c9a45071b97"
+    },
+    {
+      "path": "dist/assets/pano-30.jpg",
+      "bytes": 27957,
+      "sha256": "7416a812131d4c8ab460b898bca2c68d730ae2f32aa5e18c51d3c9602d1437d7"
+    },
+    {
+      "path": "dist/assets/pano-4.jpg",
+      "bytes": 1202070,
+      "sha256": "3dc8767bdb6aefeb7f79c52d094bbced4d2e313635bbb894777fb481b248fbdf"
+    },
+    {
+      "path": "dist/assets/pano-5.jpg",
+      "bytes": 314219,
+      "sha256": "90b7d024a02fcb099014ef4e5d406b37c602d4e29ca1d48a90725ce9595953d5"
+    },
+    {
+      "path": "dist/assets/pano-6.jpg",
+      "bytes": 338019,
+      "sha256": "6b6a48e4d05b335d5f1cdac0e893085c27a6eb28d9c75be28cdb579f0d6505cc"
+    },
+    {
+      "path": "dist/assets/pano-7.jpg",
+      "bytes": 331834,
+      "sha256": "ece0aaaebf8e4a06d3521dab79447efa8d643afaa174ef90a4dd8601fe746280"
+    },
+    {
+      "path": "dist/assets/pano-8.jpg",
+      "bytes": 410002,
+      "sha256": "b8e95186af664f6bcd00c15530d38ae87691f158e56ef60610cd8f549bff8d27"
+    },
+    {
+      "path": "dist/assets/pano-9.jpg",
+      "bytes": 333238,
+      "sha256": "2d47a8420f22c1b10bcd2150efe37cf6d9d171037330cab6316848a5556a2b82"
+    },
+    {
+      "path": "dist/assets/thermal.jpg",
+      "bytes": 102198,
+      "sha256": "a53e63745047dd4a3005b704706d94d8e9da9c62093af27be30b59ec44ec83ab"
+    },
+    {
+      "path": "dist/assets/traverse.json",
+      "bytes": 1645415,
+      "sha256": "86352d619fa9b7ff0ed47e5e0627b03624444733d9cdbcec8000a54f65fcda6a"
+    },
+    {
+      "path": "dist/assets/waypoints.json",
+      "bytes": 261867,
+      "sha256": "44361923877ef369859757445249b9e6ecb30ef6828521019ddb86c510f029db"
+    },
+    {
+      "path": "dist/experience.js",
+      "bytes": 2491,
+      "sha256": "474eafe764728803a6f06193b0240259cf854d34ce85f903b3e763a85ed99160"
+    },
+    {
+      "path": "dist/globe.js",
+      "bytes": 4075,
+      "sha256": "07a340a5970a235047b320a4af81433233d550abbc19b962690944856142a3bb"
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 16416,
+      "sha256": "2443b0916651bf0b1ea517eabcacab43cc2f6efde5ce6631cdcc8552af4dd99c"
+    },
+    {
+      "path": "dist/map-camera.js",
+      "bytes": 907,
+      "sha256": "726110c649a5d5b8edd0058cf403c6b8a15b4f7fc590a0e0015ec63273c2bb92"
+    },
+    {
+      "path": "dist/mission-base.js",
+      "bytes": 243,
+      "sha256": "6a96949d723a03bd0ee88189b48c5d5b2a56bf2a120b0892c0a9ebc5010a7c18"
+    },
+    {
+      "path": "dist/mission-flow.js",
+      "bytes": 1104,
+      "sha256": "e731eca9917ae908cbfeeab9d7518473c51fa41427128a7e92a15586c31c1df3"
+    },
+    {
+      "path": "dist/route-alternatives.js",
+      "bytes": 1961,
+      "sha256": "be1f1b03e444b1f8215bbfae77be5e0841d480254073b87551451abe495d08a9"
+    },
+    {
+      "path": "dist/routing.js",
+      "bytes": 7199,
+      "sha256": "7ab3fb74970237a2056983c06569a820f65680cf1d9df00076222f8c7f7c5ec0"
+    },
+    {
+      "path": "dist/sample-mission.js",
+      "bytes": 900,
+      "sha256": "69fd704295bbd890a1c85c2536c963c96c9c6357caae137a85b5b0f7d8c7b608"
+    },
+    {
+      "path": "dist/style.css",
+      "bytes": 35923,
+      "sha256": "552e96878bf7609b9c8b3dbba1a7759672c672683db74e7db4ce167d6af9df79"
+    },
+    {
+      "path": "dist/terrain-camera.js",
+      "bytes": 649,
+      "sha256": "41a6abaad32bccae7f87cafdd735836155a8f6293a3b9d0d7f88db12727e36d3"
+    },
+    {
+      "path": "dist/terrain.html",
+      "bytes": 1017,
+      "sha256": "8c0b85a8b0125111103f537a312a5d04147ee0c1b56311639aedbce09d49349a"
+    },
+    {
+      "path": "dist/terrain.js",
+      "bytes": 5043,
+      "sha256": "e2d01c0dd78231ea4ba5e4856b294da9c532a9f31644c8f076ab5d3120192f57"
+    },
+    {
+      "path": "dist/vr.js",
+      "bytes": 11317,
+      "sha256": "c5743aada9116741a9f0eff48dbcd1c36407dca849d6a189041a1e89a851c65a"
+    },
+    {
+      "path": "docs/CHANGELOG.md",
+      "bytes": 4693,
+      "sha256": "9cc9687c3d70c960ef4030831018698c9fb07b5480824787cc502f3d706b441d"
+    },
+    {
+      "path": "docs/DATA-SOURCES.md",
+      "bytes": 5907,
+      "sha256": "69f57c34b95f5eb62863f2c33e55dc67076fd76d10d529f98f55e02c8c0a6850"
+    },
+    {
+      "path": "docs/MUSIC-LICENSE.md",
+      "bytes": 651,
+      "sha256": "2b315d51b517e20d06e515f7ced589f36e6e2b2cd1237ef670f1df24814a89b4"
+    },
+    {
+      "path": "docs/ROUTING.md",
+      "bytes": 3036,
+      "sha256": "d84318df755ba52db075ebf7faadedfb40708af43a8d5fda593f276ba1e9a1fc"
+    },
+    {
+      "path": "package.json",
+      "bytes": 649,
+      "sha256": "3b4e1c8ef571c95468bb1a5f653f0e12f83077d756914d39da3ac83a192e8684"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 105,
+      "sha256": "2acb466d286373162c6bd0c222e747f9f5cf2299f5993214c5613093ffea4edd"
+    },
+    {
+      "path": "scripts/build_bundle.py",
+      "bytes": 3504,
+      "sha256": "3faf27ce3386f8479f95de9df9574af8d5ed7291a3c6184e5de37681a945b8f2"
+    },
+    {
+      "path": "scripts/fetch_catalogs.py",
+      "bytes": 757,
+      "sha256": "1f3f3ae2d646240b636f8127472d9df605e8a1c0bef8df9cda92ecd7de460201"
+    },
+    {
+      "path": "scripts/prepare_color.py",
+      "bytes": 1125,
+      "sha256": "900e7db9371636dad1a877d0ee46cc9a16f02d69d0b285bade7f9f5322022920"
+    },
+    {
+      "path": "scripts/prepare_data.py",
+      "bytes": 3727,
+      "sha256": "24f18919ee5f21d76adbac92e17e76aa2558f4e633cfd3df651857ac0635e830"
+    },
+    {
+      "path": "scripts/prepare_global.py",
+      "bytes": 1068,
+      "sha256": "e3d7eafddce4c61d12fe4dcbf1b147ea095a1d995585339faf19bf5657316e60"
+    },
+    {
+      "path": "scripts/prepare_globe.py",
+      "bytes": 1281,
+      "sha256": "a64f8f70dc168fe6169d05a8e3e9ea33c1947c74d059554609414370689b6980"
+    },
+    {
+      "path": "scripts/test-alternatives.mjs",
+      "bytes": 1534,
+      "sha256": "bbaa8102987232affd844f2599824954609c961c1eba8a12b6b84b633b478465"
+    },
+    {
+      "path": "scripts/test-camera-sample.mjs",
+      "bytes": 1957,
+      "sha256": "090d6492449e99eb07ae044b71835a1a40cbdaebbc9f0c8b66f36962c9006600"
+    },
+    {
+      "path": "scripts/test-experience.mjs",
+      "bytes": 2202,
+      "sha256": "00f9e80bd5abe24b3040768f64c25e316d82016a3dea9c72fbdf894d8f3cb2c1"
+    },
+    {
+      "path": "scripts/test-globe.mjs",
+      "bytes": 605,
+      "sha256": "83b8f55891409bda23fcc1f55d8aa502b74a2e8b7c0eff7cc3fc2c06f82791bd"
+    },
+    {
+      "path": "scripts/test-map.mjs",
+      "bytes": 715,
+      "sha256": "e41764b25f5ae3880383d7d982615eb1c267add1c213bdc75cb925b74473cbd2"
+    },
+    {
+      "path": "scripts/test-mission-flow.mjs",
+      "bytes": 1523,
+      "sha256": "a4bacf5718774127f5366fc12d85b15117b7808516044fa2a8a064f373895aa6"
+    },
+    {
+      "path": "scripts/test-routing.mjs",
+      "bytes": 3147,
+      "sha256": "bb7624497dad5dcb3f97186f15db8f6dbe28b3192448ccbe2be8ea26268f5b25"
+    },
+    {
+      "path": "scripts/test-terrain-adapter.mjs",
+      "bytes": 2390,
+      "sha256": "3478630aae7cc29aa3b45ece341a366340e0302ad84044f10a7586a6006d7c54"
+    },
+    {
+      "path": "scripts/test-vr.mjs",
+      "bytes": 3364,
+      "sha256": "23149638a74efcb32a1029ae992eeaa7f4cc825fcddbb8e890d3ed2c7fd78d98"
+    }
+  ],
+  "exclusions": [
+    "Git history and credentials",
+    "Secrets and environment files",
+    "Generated archives (avoids self-inclusion)",
+    "Browser-local mission settings",
+    "External science archives not ingested into the project"
+  ]
+}

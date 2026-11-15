@@ -1,0 +1,16 @@
+{
+  "name": "Viking Merged Color Mosaic",
+  "source": "https://www.mars.asu.edu/data/mdim_color/",
+  "bounds": [
+    -180,
+    -90,
+    180,
+    90
+  ],
+  "size": [
+    4096,
+    2048
+  ],
+  "credit": "NASA Viking Orbiter / USGS / ASU",
+  "note": "Prepared from the provider full-resolution tiles, downsampled for the globe. Global context only; local map uses HiRISE."
+}
