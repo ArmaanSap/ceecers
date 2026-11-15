@@ -219,7 +219,7 @@ function renderMissionList(){
  const ul=$('#missionList');if(!ul)return;const items=[];
  for(const [id,set] of picks){const p=panos.find(q=>q.id===id);if(!p)continue;items.push(`<li><div class="mhead"><strong>${esc(p.name)}</strong><small>${esc(id===MISSION_BASE.panoramaId?'Martian Base':regionName(p))}</small><button class="x" data-unpick="${id}" aria-label="Remove ${esc(p.name)}">✕</button></div><div class="mtasks">${[...set].map(t=>`<span class="chip">${esc(experiments.find(e=>e.id===t)?.name||t)}<button data-untask="${id}|${esc(t)}" aria-label="Remove task">×</button></span>`).join('')}</div></li>`)}
  for(const c of customPicks())items.push(`<li><div class="mhead"><strong>${esc(c.name)}</strong><small>your point</small><button class="x" data-uncustom="${esc(c.id)}" aria-label="Remove ${esc(c.name)}">✕</button></div><div class="mtasks">${(c.experimentIds||[]).map(t=>`<span class="chip">${esc(experiments.find(e=>e.id===t)?.name||t)}</span>`).join('')}</div></li>`);
- $('[data-slot=empty]').style.display=items.length?'none':'';ul.innerHTML=items.join('')||'<li class="feedempty">Nothing yet. Click a point of interest on the map, then click a task in its bubble.</li>';
+ $('[data-slot=empty]').style.display=items.length?'none':'';ul.innerHTML=items.join('')||'<li class="feedempty">Nothing yet.</li>';
  const n=picks.size+customPicks().length,t=pickedTaskIds().length+(picks.get(MISSION_BASE.panoramaId)?.has('sample')?0:0);
  $('#chosenTasks').textContent=n?`${n} stop${n===1?'':'s'} · ${t} task${t===1?'':'s'}`:'No stops yet';$('#buildMission').disabled=!canBuild();updateEquipment();
 }

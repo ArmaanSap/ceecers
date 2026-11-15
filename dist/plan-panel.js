@@ -13,7 +13,7 @@ export function progressIndex(route,info){
 export function createPlanPanel({root,onFocus=()=>{}}){
  let route=null,settings=null,marks={pinned:new Set(),visit:new Set()},info=null;
  function paint(){
-  if(!route||(!route.stops.length&&!route.baseTasks?.length)){root.innerHTML='<p class="planempty">No plan yet.<br>Click a point on the map or a panorama pin, choose a task, then Make route.</p>';return}
+  if(!route||(!route.stops.length&&!route.baseTasks?.length)){root.innerHTML='<p class="planempty">No plan yet. Pick a point, choose a task, then Make route.</p>';return}
   
   const tasksHtml=(tasks,keyOf)=>tasks.map(t=>`<label class="switch plantask"><input type="checkbox" data-task="${esc(keyOf(t))}"><i></i><span>${esc(t.name)} <em>${t.min} min</em></span></label>`).join('');
   root.innerHTML=`<div class="plansummary"><strong>${route.stops.length} stop${route.stops.length===1?'':'s'}</strong> · ${(route.distance/1000).toFixed(2)} km · ${Math.ceil(route.minutes)} min · ascent ${Math.round(route.ascent||0)} m</div>

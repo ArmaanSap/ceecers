@@ -195,3 +195,14 @@ body.intro-active #introBrand{display:flex;flex-direction:column;align-items:cen
 @media (max-width:700px){.acronym .acr{font-size:10px}.acronym .acr b{font-size:15px}}
 #vrFab{position:fixed;right:18px;bottom:18px;z-index:8000;padding:14px 20px;font:700 15px 'Press Start 2P',monospace;background:#7dffc6;color:#06201a;border:3px solid #06201a;box-shadow:0 0 0 3px #7dffc6,0 8px 24px #000a;cursor:pointer}#vrFab:disabled{opacity:.7}
 .acronym .acr.and{color:#9fb3a8;font-size:11px;align-self:flex-end}
+
+/* Mars now strip (header, top right) */
+header .status.marsnow{display:flex;gap:14px;align-items:center;white-space:nowrap;letter-spacing:.5px}
+header .status.marsnow i:first-child{display:none}
+header .marsnow .mn{display:inline-flex;gap:5px;align-items:baseline;padding:3px 8px;border:1px solid #3a5a46;background:#0c1510;cursor:help}
+header .marsnow .mn b{font-weight:400;color:var(--mint,#c8eea5)}
+header .marsnow .mn i{font-style:normal;font-size:9px;opacity:.7;letter-spacing:1px;text-transform:uppercase}
+@media(max-width:1500px){header .marsnow .mn:nth-child(3){display:none}}
+@media(max-width:1250px){header .marsnow .mn:nth-child(2),header .marsnow .mn:nth-child(3){display:none}}
+header .marsnow .mn{font-size:12px}
+.feedempty{display:none}
